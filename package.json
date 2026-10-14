@@ -6,7 +6,17 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 4185 --strictPort",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 4185 --strictPort"
+    "preview": "vite preview --host 127.0.0.1 --port 4185 --strictPort",
+    "rag:api": "node ./rag-backend/server.js",
+    "start": "node ./server.js",
+    "dev:restart": "powershell -ExecutionPolicy Bypass -File ./scripts/restart-hotreload.ps1",
+    "dev:url": "powershell -ExecutionPolicy Bypass -File ./scripts/ensure-url.ps1",
+    "agent:demo": "node ./agent-core/run-demo.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mermaid": "^11.16.1"
   },
   "devDependencies": {
     "vite": "^7.1.1"

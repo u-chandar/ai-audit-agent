@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentName": {
+      "value": "rag-sandbox"
+    },
+    "webImageName": {
+      "value": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
+    },
+    "azureOpenAiEndpoint": {
+      "value": "https://bwxt-dbx-sandbox-openai.openai.azure.us/"
+    },
+    "azureOpenAiResourceId": {
+      "value": "/subscriptions/2918c218-c374-41d4-9114-18eadc28caad/resourceGroups/bwxt-tsg-sandbox-rg/providers/Microsoft.CognitiveServices/accounts/bwxt-dbx-sandbox-openai"
+    },
+    "azureOpenAiChatDeployment": {
+      "value": "gpt-4o-mini"
+    },
+    "azureOpenAiEmbeddingDeployment": {
+      "value": "text-embedding-ada-002"
+    },
+    "embeddingDimensions": {
+      "value": "1536"
+    },
+    "azureOpenAiApiVersion": {
+      "value": "2024-10-21"
+    },
+    "azureFormRecognizerEndpoint": {
+      "value": "https://bwxt-docint-sandbox.cognitiveservices.azure.us/"
+    },
+    "azureFormRecognizerResourceId": {
+      "value": "/subscriptions/2918c218-c374-41d4-9114-18eadc28caad/resourceGroups/bwxt-tsg-sandbox-rg/providers/Microsoft.CognitiveServices/accounts/bwxt-docint-sandbox"
+    }
+  }
+}

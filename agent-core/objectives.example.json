@@ -1,0 +1,15 @@
+{
+  "id": "obj_governance_q3",
+  "title": "Improve AI governance readiness for Q3 release",
+  "domain": "ai-governance",
+  "constraints": [
+    "Use approved evidence sources only",
+    "Do not expose personal data in generated summaries",
+    "Publish only after reflection and self-critique"
+  ],
+  "successCriteria": [
+    "All mandatory subgoals completed",
+    "No unresolved high-risk findings",
+    "Transparency log available to end users"
+  ]
+}

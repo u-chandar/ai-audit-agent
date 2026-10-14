@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aegis AI — continuous, evidence-led AI compliance auditing." />
+  <meta name="description" content="Aegis AI - continuous, evidence-led AI compliance auditing." />
   <title>Aegis AI Audit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ui-glass-overrides.css" />
   <link rel="stylesheet" href="analysis.css" />
   <link rel="stylesheet" href="architecture.css" />
   <link rel="stylesheet" href="product.css" />
@@ -17,39 +18,44 @@
   <link rel="stylesheet" href="design.css" />
   <link rel="stylesheet" href="handling.css" />
   <link rel="stylesheet" href="nuclear.css" />
+  <link rel="stylesheet" href="mermaid-diagrams.css" />
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand"><span class="brand-mark">A</span><span>Aegis</span><span class="brand-badge">AI</span></div>
       <nav id="nav">
-        <button class="nav-item active" data-view="dashboard"><span class="ico">⌂</span>Overview</button>
-        <button class="nav-item" data-view="product"><span class="ico">◉</span>Product & playbook</button>
-        <button class="nav-item" data-view="new-audit"><span class="ico">＋</span>New audit</button>
-        <button class="nav-item" data-view="design"><span class="ico">◫</span>Design analysis <span class="new-badge">NEW</span></button>
-        <button class="nav-item" data-view="batch"><span class="ico">▤</span>Batch processing <span class="count" id="batch-nav-count">8</span></button>
-        <button class="nav-item" data-view="agents"><span class="ico">◇</span>Agent studio</button>
-        <button class="nav-item" data-view="architecture"><span class="ico">⌘</span>Architecture</button>
-        <button class="nav-item" data-view="security"><span class="ico">⚿</span>Security baseline <span class="baseline-ok">LIVE</span></button>
-        <button class="nav-item" data-view="nuclear"><span class="ico">☢</span>Nuclear assurance</button>
-        <button class="nav-item" data-view="deep-analysis"><span class="ico">⌬</span>Deep analysis <span class="new-badge">NEW</span></button>
-        <button class="nav-item" data-view="frameworks"><span class="ico">▦</span>Frameworks</button>
-        <button class="nav-item" data-view="reports"><span class="ico">≡</span>Reports <span class="count">4</span></button>
+        <button class="nav-item active" data-view="dashboard"><span class="ico">OV</span>Overview</button>
+        <button class="nav-item" data-view="new-audit"><span class="ico">AW</span>Audit workspace</button>
+        <button class="nav-item" data-view="product"><span class="ico">PD</span>Product</button>
+        <button class="nav-item" data-view="deep-analysis"><span class="ico">DA</span>Deep analysis</button>
+        <button class="nav-item" data-view="reports"><span class="ico">RP</span>Reports <span class="count">4</span></button>
       </nav>
+      <div class="side-label">WORKSPACES</div>
+      <div class="nav-compact-links">
+        <button class="nav-link-chip" data-go="product">Product</button>
+        <button class="nav-link-chip" data-go="design">Design review</button>
+        <button class="nav-link-chip" data-go="batch">Batch queue</button>
+        <button class="nav-link-chip" data-go="frameworks">Frameworks</button>
+        <button class="nav-link-chip" data-go="security">Security baseline</button>
+        <button class="nav-link-chip" data-go="agents">Policy chat</button>
+        <button class="nav-link-chip" data-go="architecture">Architecture</button>
+        <button class="nav-link-chip" data-go="nuclear">Nuclear</button>
+      </div>
       <div class="side-label">WORKSPACE</div>
-      <div class="workspace"><span class="workspace-icon">B</span><div><b>BWXT TSG</b><small>Enterprise workspace</small></div><span>⌄</span></div>
+      <div class="workspace"><span class="workspace-icon">B</span><div><b>BWXT TSG</b><small>Enterprise workspace</small></div><span>Open</span></div>
       <div class="sidebar-spacer"></div>
-      <div class="open-source"><span>⌘</span><div><b>Open-source first</b><small>12 tools connected</small></div></div>
-      <button class="nav-item"><span class="ico">?</span>Help & documentation</button>
-      <div class="profile"><div class="avatar">UM</div><div><b>Uma M.</b><small>Security lead</small></div><span>•••</span></div>
+      <div class="open-source"><span>OS</span><div><b>Open-source first</b><small>12 tools connected</small></div></div>
+      <button class="nav-item"><span class="ico">DOC</span>Help & documentation</button>
+      <div class="profile"><div class="avatar">UM</div><div><b>Uma M.</b><small>Security lead</small></div><span>Menu</span></div>
     </aside>
 
     <main>
       <header class="topbar">
         <div class="breadcrumb"><span>BWXT TSG</span><b>/</b><strong id="crumb">Overview</strong></div>
         <div class="top-actions">
-          <button class="icon-btn" title="Search">⌕</button><button class="icon-btn notification" title="Notifications">♢<i></i></button>
-          <button class="primary small" data-go="new-audit">＋ Run new audit</button>
+          <button class="icon-btn" title="Search">Find</button><button class="icon-btn notification" title="Notifications">Alerts<i></i></button>
+          <button class="primary small" data-go="new-audit">Run new audit</button>
         </div>
       </header>
 
@@ -59,88 +65,384 @@
           <div class="scope"><span class="pulse"></span><div><small>Continuous monitoring</small><b>All systems healthy</b></div><button>Manage</button></div>
         </div>
 
+        <div class="workspace-shortcuts">
+          <button class="workspace-shortcut" data-go="new-audit"><b>Audit workspace</b><small>Run project audits and review current queue.</small></button>
+          <button class="workspace-shortcut" data-go="product"><b>Product</b><small>Methods, baselines, framework library, and policy chat.</small></button>
+          <button class="workspace-shortcut" data-go="deep-analysis"><b>Deep analysis</b><small>Code, data, and governance findings for uploaded evidence.</small></button>
+          <button class="workspace-shortcut" data-go="reports"><b>Reports</b><small>Verdicts, remediation plans, and traceable evidence outputs.</small></button>
+        </div>
+
         <div class="stats-grid">
-          <article class="stat-card"><div class="stat-head"><span>Overall readiness</span><span class="trend up">↗ 6.2%</span></div><div class="stat-value">82<span>%</span></div><div class="progress"><i style="width:82%"></i></div><small>Across 23 active frameworks and baselines</small></article>
-          <article class="stat-card"><div class="stat-head"><span>Controls evaluated</span><span class="tag neutral">This month</span></div><div class="stat-value">1,248</div><div class="split"><span><i class="dot green"></i>1,024 passed</span><span><i class="dot red"></i>76 failed</span></div></article>
-          <article class="stat-card"><div class="stat-head"><span>Open findings</span><span class="trend down">↓ 12</span></div><div class="stat-value">27</div><div class="severity"><i class="sev high"></i><b>3 critical</b><span>·</span><i class="sev med"></i><span>8 high</span></div></article>
-          <article class="stat-card"><div class="stat-head"><span>Evidence coverage</span><span class="trend up">↗ 3.8%</span></div><div class="stat-value">91<span>%</span></div><div class="progress teal"><i style="width:91%"></i></div><small>1,136 of 1,248 controls</small></article>
+          <article class="stat-card" data-report-target="report-summary-section"><div class="stat-head"><span>Overall readiness</span><span class="trend up">up 6.2%</span></div><div class="stat-value">82<span>%</span></div><div class="progress"><i style="width:82%"></i></div><small>Across 23 active frameworks and baselines</small></article>
+          <article class="stat-card" data-report-target="report-performance-section"><div class="stat-head"><span>Controls evaluated</span><span class="tag neutral">This month</span></div><div class="stat-value">1,248</div><div class="split"><span><i class="dot green"></i>1,024 passed</span><span><i class="dot red"></i>76 failed</span></div></article>
+          <article class="stat-card" data-report-target="report-findings-section" data-finding-filter="all"><div class="stat-head"><span>Open findings</span><span class="trend down">down 12</span></div><div class="stat-value">27</div><div class="severity"><i class="sev high"></i><b>3 critical</b><span> - </span><i class="sev med"></i><span>8 high</span></div></article>
+          <article class="stat-card" data-report-target="report-transparency-section"><div class="stat-head"><span>Evidence coverage</span><span class="trend up">up 3.8%</span></div><div class="stat-value">91<span>%</span></div><div class="progress teal"><i style="width:91%"></i></div><small>1,136 of 1,248 controls</small></article>
         </div>
 
         <div class="content-grid">
           <article class="panel readiness-panel">
-            <div class="panel-title"><div><h2>Framework readiness</h2><p>Control coverage across your active compliance programs</p></div><button class="text-btn" data-go="frameworks">View all →</button></div>
+            <div class="panel-title"><div><h2>Framework readiness</h2><p>Control coverage across your active compliance programs</p></div><button class="text-btn" data-go="frameworks">View all -></button></div>
             <div id="framework-list"></div>
           </article>
           <article class="panel risk-panel">
-            <div class="panel-title"><div><h2>Risk posture</h2><p>Findings by severity</p></div><button class="dots">•••</button></div>
-            <div class="donut-wrap"><div class="donut"><div><b>27</b><span>open</span></div></div><div class="legend"><p><i class="critical"></i><span>Critical</span><b>3</b></p><p><i class="high"></i><span>High</span><b>8</b></p><p><i class="medium"></i><span>Medium</span><b>10</b></p><p><i class="low"></i><span>Low</span><b>6</b></p></div></div>
-            <button class="ghost full" data-go="reports">Review all findings →</button>
+            <div class="panel-title"><div><h2>Risk posture</h2><p>Findings by severity</p></div><button class="dots">***</button></div>
+            <div class="donut-wrap"><div class="donut" data-report-target="report-findings-section" data-finding-filter="all"><div><b>27</b><span>open</span></div></div><div class="legend"><p data-report-target="report-findings-section" data-finding-filter="critical"><i class="critical"></i><span>Critical</span><b>3</b></p><p data-report-target="report-findings-section" data-finding-filter="high"><i class="high"></i><span>High</span><b>8</b></p><p data-report-target="report-findings-section" data-finding-filter="medium"><i class="medium"></i><span>Medium</span><b>10</b></p><p data-report-target="report-findings-section" data-finding-filter="low"><i class="low"></i><span>Low</span><b>6</b></p></div></div>
+            <button class="ghost full" data-report-target="report-findings-section" data-finding-filter="all">Review all findings -></button>
           </article>
         </div>
 
         <article class="panel audits-panel">
-          <div class="panel-title"><div><h2>Recent audits</h2><p>Latest evaluations across your AI portfolio</p></div><div class="table-actions"><button class="ghost">⌕ Search</button><button class="ghost">≡ Filter</button></div></div>
+          <div class="panel-title"><div><h2>Recent audits</h2><p>Latest evaluations across your AI portfolio</p></div><div class="table-actions"><button class="ghost">? Search</button><button class="ghost">= Filter</button></div></div>
           <div class="table-wrap"><table><thead><tr><th>PROJECT</th><th>FRAMEWORKS</th><th>READINESS</th><th>FINDINGS</th><th>LAST RUN</th><th>STATUS</th><th></th></tr></thead><tbody id="audit-table"></tbody></table></div>
         </article>
       </section>
 
       <section class="view" id="product">
-        <div class="page-head"><div><p class="eyebrow">PRODUCT TRANSPARENCY</p><h1>How Aegis audits a project</h1><p class="subtitle">The complete evidence playbook, comparison algorithm, and versioned compliance baselines used by BWXT TSG.</p></div><div class="baseline-stamp"><span>BASELINES REVIEWED</span><b>August 8, 2026</b></div></div>
-        <div class="product-intro"><div><span class="brand-mark">A</span><small>AEGIS AI AUDIT</small></div><h2>Evidence before verdict.</h2><p>Aegis discovers technical facts, normalizes them into immutable evidence, maps that evidence to canonical controls, compares applicable requirements, challenges each conclusion, and produces a reproducible report. It provides decision support—not legal certification or a SOC attestation.</p><div class="product-principles"><span>Local-first collection</span><span>Versioned baselines</span><span>Deterministic scoring</span><span>Independent verification</span></div></div>
-        <article class="panel algorithm-handling"><div class="panel-title"><div><h2>Current system and algorithm handling</h2><p>One reusable pipeline serves project audits, batch processing, security reviews, and proposed-design analysis</p></div><span class="verified">ONE ALGORITHM</span></div><div class="handling-grid"><div><span>NOW</span><h3>Prototype execution</h3><p>The browser renders mock evidence and results. File selection remains local; it does not parse or transmit document contents. Baseline refresh and agent execution are simulated state transitions.</p></div><div><span>TARGET</span><h3>Production execution</h3><p>The same stage contracts call sandboxed parsers and scanners, normalized evidence storage, canonical policy mappings, deterministic scoring, and independent verification.</p></div><div><span>UNKNOWN</span><h3>Uncertainty handling</h3><p>Missing answers and unreadable evidence create typed unknowns and discovery tasks. They never become an automatic pass or fail and reduce confidence until verified.</p></div><div><span>CHANGE</span><h3>Baseline handling</h3><p>Official sources are checked before each run. The accepted manifest is pinned; new rules create a new baseline and never silently change a completed report.</p></div><div><span>CONFLICT</span><h3>Contradiction handling</h3><p>Machine evidence outranks documentation. Conflicting evidence is retained, marked for adversarial evaluation, and escalated when confidence stays below threshold.</p></div><div><span>REUSE</span><h3>No duplicate analysis</h3><p>Single, batch, security, and design workflows reuse SourceManifest, EvidenceGraph, ControlMap, ControlResult, Verification, and ReportSnapshot contracts.</p></div></div></article>
-        <div class="product-layout">
-          <article class="panel playbook-panel"><div class="panel-title"><div><h2>Audit playbook</h2><p>Nine stages from source connection to remediation verification</p></div><span class="version-pill">ALGORITHM v1.0</span></div><div class="playbook-flow">
-            <div class="playbook-step"><span>01</span><div><b>Scope & applicability</b><p>Identify system purpose, jurisdictions, industry, AI role, data subjects, deployment geography, and selected frameworks. Requirements outside the declared scope become not applicable—not passed.</p></div><em>AuditRequest</em></div>
-            <div class="playbook-step"><span>02</span><div><b>Source manifest</b><p>Inventory files, commits, dependencies, infrastructure, policies, schemas, models, datasets, APIs, streams, stores, and deployment descriptors. Hash every artifact and preserve exclusions.</p></div><em>SourceManifest</em></div>
-            <div class="playbook-step"><span>03</span><div><b>Architecture & data-flow discovery</b><p>Detect services, trust boundaries, identity paths, data stores, Kafka or streaming flows, training/inference pipelines, model registries, external processors, and regional movement.</p></div><em>AssetGraph</em></div>
-            <div class="playbook-step"><span>04</span><div><b>Deterministic collection</b><p>Run policy-as-code, SBOM, secret, IaC, configuration, access, encryption, dependency, and lineage checks before using AI reasoning.</p></div><em>RawEvidence[]</em></div>
-            <div class="playbook-step"><span>05</span><div><b>Evidence normalization</b><p>Convert scanner output into typed facts with source, digest, collector version, observation time, classification, confidence, and tenant boundary.</p></div><em>EvidenceGraph</em></div>
-            <div class="playbook-step"><span>06</span><div><b>Canonical control mapping</b><p>Map one technical fact to shared controls, then map those controls to versioned GDPR, HIPAA, SOC 2, ISO, NIST, EU AI Act, PCI, and CCPA requirements.</p></div><em>ControlMap</em></div>
-            <div class="playbook-step"><span>07</span><div><b>Evaluation & scoring</b><p>Apply applicability, evidence freshness, confidence, severity, and critical-control caps. Missing evidence is unknown, never automatically pass or fail.</p></div><em>ControlResult[]</em></div>
-            <div class="playbook-step"><span>08</span><div><b>Adversarial verification</b><p>Blindly re-check all critical failures, low-confidence decisions, and a sample of passes using separate evidence selection and evaluation strategy.</p></div><em>Verification[]</em></div>
-            <div class="playbook-step"><span>09</span><div><b>Report, remediate, re-test</b><p>Create an immutable snapshot with evidence links, verdicts, uncertainty, owners, recommended code and tools. Re-run affected controls after remediation.</p></div><em>ReportSnapshot</em></div>
-          </div></article>
-          <aside class="product-side"><article class="panel formula-card"><p class="eyebrow">SCORING ALGORITHM</p><h2>Risk-adjusted readiness</h2><div class="formula">Σ (applicable weight × verdict × confidence × freshness)<hr>Σ applicable weight</div><ul><li><b>Pass</b><span>1.0</span></li><li><b>Partial</b><span>0.5</span></li><li><b>Unknown</b><span>0.0 + evidence flag</span></li><li><b>Fail</b><span>0.0 + finding</span></li><li><b>Not applicable</b><span>excluded</span></li></ul><div class="critical-cap"><b>Critical cap</b><p>An unresolved critical control caps readiness at 69%, regardless of the weighted mean.</p></div></article><article class="panel evidence-strength"><h2>Evidence strength order</h2><ol><li><b>Observed runtime / signed record</b><span>Highest</span></li><li><b>Machine configuration / test result</b><span>Strong</span></li><li><b>Source code / IaC</b><span>Strong</span></li><li><b>Approved policy + implementation proof</b><span>Moderate</span></li><li><b>Documentation only</b><span>Weak</span></li><li><b>Interview or assertion only</b><span>Lowest</span></li></ol></article></aside>
+        <div class="page-head"><div><p class="eyebrow">PRODUCT TRANSPARENCY</p><h1>How Aegis audits a project</h1><p class="subtitle">The complete evidence playbook, baseline-first compliance gate, and live policy-RAG orchestration used by BWXT TSG.</p></div><div class="baseline-stamp"><span>BASELINES REVIEWED</span><b>August 11, 2026</b></div></div>
+        <div class="product-intro"><div><span class="brand-mark">A</span><small>AEGIS ASSURANCE</small></div><h2>Evidence before verdict.</h2><p>Aegis discovers technical facts, normalizes them into immutable evidence, maps that evidence to canonical controls, compares applicable requirements, challenges each conclusion, and produces a reproducible report. It is designed for AI-enabled, analytics, software, and data-intensive systems rather than a single model or vendor pattern. It provides decision support, not legal certification or a formal attestation.</p><div class="product-principles"><span>Local-first collection</span><span>Versioned baselines</span><span>Deterministic scoring</span><span>Independent verification</span></div></div>
+        <div class="workspace-shortcuts compact-shortcuts">
+          <button class="workspace-shortcut" data-go="frameworks"><b>Framework library</b><small>Cross-mapped obligations and readiness baselines.</small></button>
+          <button class="workspace-shortcut" data-go="security"><b>Security baseline</b><small>Pinned policy sources and pre-run validation.</small></button>
+          <button class="workspace-shortcut" data-go="agents"><b>Policy chat</b><small>Ask grounded questions about policies and gaps.</small></button>
+          <button class="workspace-shortcut" data-go="architecture"><b>Architecture</b><small>RAG, execution, and deployment blueprint.</small></button>
         </div>
-        <article class="panel extraction-panel"><div class="panel-title"><div><h2>What Aegis extracts and compares</h2><p>Data categories are minimized and mapped to a specific audit purpose</p></div><span class="secure">● Secrets excluded by default</span></div><div class="extraction-grid"><div><b>Application structure</b><p>Languages, modules, functions, APIs, dependencies, build files, tests, ownership, dead paths, complexity.</p><span>Compared with secure design, change control, testing, and accountability controls.</span></div><div><b>Infrastructure</b><p>Cloud resources, Kubernetes, containers, network boundaries, IAM, keys, backups, logging, resilience.</p><span>Compared with access, encryption, availability, monitoring, and recovery requirements.</span></div><div><b>Data models & flows</b><p>Entities, fields, classifications, sources, destinations, streams, retention, residency, consent, deletion.</p><span>Compared with minimization, purpose, rights, safeguards, lineage, and lifecycle rules.</span></div><div><b>AI systems</b><p>Models, prompts, training runs, datasets, features, metrics, bias, drift, explainability, oversight, limitations.</p><span>Compared with AI governance, transparency, accuracy, robustness, monitoring, and human oversight.</span></div><div><b>Policies & evidence</b><p>Policies, approvals, risk registers, incidents, access reviews, training, vendors, DPIAs, BAAs, test results.</p><span>Compared for coverage, implementation proof, owner, approval, freshness, and operating effectiveness.</span></div><div><b>Supply chain</b><p>SBOMs, packages, licenses, vulnerabilities, processors, model providers, external APIs, data recipients.</p><span>Compared with vendor risk, vulnerability management, disclosure, and third-party obligations.</span></div></div></article>
-        <article class="panel baseline-panel"><div class="panel-title"><div><h2>Current baseline registry</h2><p>Authoritative source, version, applicability, and monitoring status</p></div><span class="live-baseline">● 14 monitored baselines</span></div><div class="baseline-grid">
-          <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noreferrer"><div><span class="framework-logo">GDPR</span><em>LAW</em></div><h3>EU GDPR 2016/679</h3><p>Lawful basis, transparency, minimization, rights, security, DPIAs, processors, breaches, automated decisions.</p><small>Official Journal · consolidated changes monitored</small><b>Active baseline ↗</b></a>
-          <a href="https://www.hhs.gov/hipaa/for-professionals/security/index.html" target="_blank" rel="noreferrer"><div><span class="framework-logo">HIPAA</span><em>LAW</em></div><h3>HIPAA current Security Rule</h3><p>45 CFR Parts 160 and 164 administrative, physical, and technical safeguards. The 2024 cybersecurity update remains proposed; current rule stays authoritative.</p><small>HHS OCR · page reviewed Mar 19, 2026</small><b>Active + proposal watched ↗</b></a>
-          <a href="https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022" target="_blank" rel="noreferrer"><div><span class="framework-logo">SOC 2</span><em>ATTEST</em></div><h3>2017 TSC, revised points 2022</h3><p>Security, availability, processing integrity, confidentiality, and privacy criteria for service-organization controls.</p><small>AICPA & CIMA · official criteria resource</small><b>Current criteria ↗</b></a>
-          <a href="https://www.iso.org/standard/27001" target="_blank" rel="noreferrer"><div><span class="framework-logo">ISO</span><em>STANDARD</em></div><h3>ISO/IEC 27001:2022</h3><p>Risk-based ISMS requirements and Annex A controls; licensed standard text is not redistributed by Aegis.</p><small>ISO · edition 3</small><b>Current edition ↗</b></a>
-          <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noreferrer"><div><span class="framework-logo">NIST</span><em>VOLUNTARY</em></div><h3>NIST AI RMF 1.0</h3><p>Govern, Map, Measure, and Manage trustworthy AI risk. NIST states AI RMF 1.0 is under revision.</p><small>NIST · revision and critical-infrastructure profile monitored</small><b>1.0 active · revision watched ↗</b></a>
-          <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/" target="_blank" rel="noreferrer"><div><span class="framework-logo">EU AI</span><em>LAW</em></div><h3>EU AI Act 2024/1689</h3><p>Risk classification, prohibited practices, high-risk systems, GPAI, transparency, oversight, monitoring, accuracy and robustness.</p><small>Most provisions apply Aug 2, 2026; Art. 6(1) obligations Aug 2, 2027</small><b>Phased applicability ↗</b></a>
-          <a href="https://www.pcisecuritystandards.org/document_library/" target="_blank" rel="noreferrer"><div><span class="framework-logo">PCI</span><em>STANDARD</em></div><h3>PCI DSS v4.0.1</h3><p>Technical and operational requirements for cardholder-data environments; v4.0.1 is the supported active revision.</p><small>PCI SSC · document library monitored</small><b>Current version ↗</b></a>
-          <a href="https://cppa.ca.gov/regulations/" target="_blank" rel="noreferrer"><div><span class="framework-logo">CPRA</span><em>LAW</em></div><h3>CCPA / CPRA + 2026 regulations</h3><p>Consumer rights, sensitive information, risk assessments, cybersecurity audits, and automated decisionmaking requirements.</p><small>California CPPA · updated regulations effective Jan 1, 2026</small><b>Current regulations ↗</b></a>
-          <a href="https://www.iso.org/standard/42001" target="_blank" rel="noreferrer"><div><span class="framework-logo">42001</span><em>STANDARD</em></div><h3>ISO/IEC 42001:2023</h3><p>Requirements for establishing, operating, maintaining, and continually improving an AI management system.</p><small>ISO · edition 1 · published Dec 2023</small><b>Current AI management standard ↗</b></a>
-          <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noreferrer"><div><span class="framework-logo">GAI</span><em>PROFILE</em></div><h3>NIST AI 600-1</h3><p>Cross-sector Generative AI Profile extending AI RMF 1.0 with generative-AI risks and recommended actions.</p><small>NIST · published Jul 2024 · updated Apr 8, 2026</small><b>Current GenAI profile ↗</b></a>
-          <a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noreferrer"><div><span class="framework-logo">LLM</span><em>SECURITY</em></div><h3>OWASP LLM Top 10:2025</h3><p>Community application-security risks for LLM systems, including injection, disclosure, supply chain, and excessive agency.</p><small>OWASP GenAI Security Project · 2025 edition</small><b>Security baseline ↗</b></a>
-          <a href="https://atlas.mitre.org/" target="_blank" rel="noreferrer"><div><span class="framework-logo">ATLAS</span><em>THREATS</em></div><h3>MITRE ATLAS</h3><p>Living AI threat knowledge base covering predictive, generative, and agentic AI tactics, techniques, mitigations, and cases.</p><small>MITRE · living knowledge base</small><b>Threat baseline ↗</b></a>
-          <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noreferrer"><div><span class="framework-logo">CSF</span><em>VOLUNTARY</em></div><h3>NIST CSF 2.0</h3><p>Six-function cybersecurity outcome taxonomy: Govern, Identify, Protect, Detect, Respond, and Recover.</p><small>NIST · published Feb 26, 2024 · 2026 resources monitored</small><b>Current security framework ↗</b></a>
-          <a href="https://www.nist.gov/news-events/news/2024/07/secure-software-development-practices-generative-ai-and-dual-use-foundation" target="_blank" rel="noreferrer"><div><span class="framework-logo">SSDF</span><em>PROFILE</em></div><h3>NIST SP 800-218A</h3><p>Secure software-development practices tailored to generative AI and dual-use foundation models.</p><small>NIST · released Jul 26, 2024 · updated Jun 25, 2025</small><b>Current AI SSDF profile ↗</b></a>
+        <article class="panel product-agent-algorithm-panel">
+          <div class="panel-title">
+            <div>
+              <h2>Product algorithm tabs</h2>
+              <p>Switch between system behavior and agent-level algorithm design with citations.</p>
+            </div>
+            <span class="version-pill">AGENT METHODS</span>
+          </div>
+          <div class="agent-tab-strip" id="product-agent-tabs">
+            <button class="active" data-product-tab="system">System algorithm</button>
+            <button data-product-tab="agents">Agents algorithm</button>
+            <button data-product-tab="product-brief">Product brief</button>
+          </div>
+          <section class="agent-tab-panel active" data-product-panel="system">
+            <div class="agent-system-summary">
+              <div><b>Inputs</b><p>Source manifests, architecture topology, evidence snapshots, policy baselines, and framework scopes.</p></div>
+              <div><b>Core method</b><p>Objective-directed orchestration with deterministic checks first, then context-aware evaluation, followed by independent blind verification.</p></div>
+              <div><b>Output</b><p>Risk-adjusted readiness score, framework-specific findings, uncertainty flags, and remediation-ready report packages.</p></div>
+            </div>
+          </section>
+          <section class="agent-tab-panel" data-product-panel="agents">
+            <div class="playbook-agent-filter"><p id="product-agent-filter-label">Showing all agents. Choose a pipeline stage to filter.</p><button class="ghost" id="product-agent-filter-clear" type="button">Clear filter</button></div>
+            <div class="agent-stage-filter-row" id="product-agent-stage-filters"></div>
+            <div id="product-agent-algorithm-list" class="agent-algorithm-list"></div>
+          </section>
+          <section class="agent-tab-panel" data-product-panel="product-brief">
+            <div class="product-brief-grid">
+              <article>
+                <h3>Product goal</h3>
+                <p>Provide evidence-first compliance and governance decision support that is reproducible, auditable, and transparent across regulated digital systems, including AI-enabled and non-AI workloads.</p>
+                <ul>
+                  <li>Run a dedicated baseline intelligence agent first for every evaluation.</li>
+                  <li>Pin every run to a versioned baseline manifest.</li>
+                  <li>Enforce freshness SLA with auto or manual mode and hard block on stale policy state.</li>
+                  <li>Prioritize objective machine evidence before narrative claims.</li>
+                  <li>Expose uncertainty instead of masking gaps with false pass/fail confidence.</li>
+                </ul>
+              </article>
+              <article>
+                <h3>Core function</h3>
+                <p>Aegis transforms technical evidence into control outcomes, then into framework-specific findings and remediation plans.</p>
+                <ul>
+                  <li>Baseline-first pre-run gate with live policy and framework refresh.</li>
+                  <li>Source intake and manifest generation.</li>
+                  <li>Deterministic checks (policy, SBOM, secrets, IaC, posture).</li>
+                  <li>Canonical control mapping, scoring, and independent verification.</li>
+                </ul>
+              </article>
+              <article>
+                <h3>Agent responsibilities</h3>
+                <p>Specialized agents partition work so every stage has clear ownership and observable handoff boundaries.</p>
+                <ul>
+                  <li>Baseline intelligence agent validates latest policies and updates policy RAG before orchestration starts.</li>
+                  <li>Discovery, data governance, security, and capability-risk agents collect and classify evidence.</li>
+                  <li>Compliance and evaluator agents challenge sufficiency and scoring confidence.</li>
+                  <li>Independent verifier and report agent finalize blind checks and publication artifacts.</li>
+                </ul>
+              </article>
+              <article>
+                <h3>Technical aspects</h3>
+                <p>The architecture is designed to move from mock UI to production services without changing user workflows.</p>
+                <ul>
+                  <li>Reusable domain contracts: SourceManifest, EvidenceGraph, ControlMap, Verification, ReportSnapshot.</li>
+                  <li>Live governance heartbeat checks RAG status every 30 seconds with automatic rebuild recovery.</li>
+                  <li>Defense and DOE compliance packages are pre-mapped with strict SLA presets.</li>
+                  <li>Queue-aware batch operations with framework presets and progress telemetry.</li>
+                  <li>Export-ready outputs for executive and engineering audiences (PDF, JSON, SARIF).</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </article>
+        <article class="panel algorithm-handling"><div class="panel-title"><div><h2>Current system and algorithm handling</h2><p>One reusable pipeline serves project audits, batch processing, security reviews, and proposed-design analysis</p></div><span class="verified">ONE ALGORITHM</span></div><div class="handling-grid"><div><span>NOW</span><h3>Prototype execution</h3><p>The browser renders mock evidence and results. File selection remains local; it does not parse or transmit document contents. Baseline refresh and agent execution are simulated state transitions.</p></div><div><span>TARGET</span><h3>Production execution</h3><p>The same stage contracts call sandboxed parsers and scanners, normalized evidence storage, canonical policy mappings, deterministic scoring, and independent verification.</p></div><div><span>UNKNOWN</span><h3>Uncertainty handling</h3><p>Missing answers and unreadable evidence create typed unknowns and discovery tasks. They never become an automatic pass or fail and reduce confidence until verified.</p></div><div><span>CHANGE</span><h3>Baseline handling</h3><p>Official sources are checked before each run. The accepted manifest is pinned; new rules create a new baseline and never silently change a completed report.</p></div><div><span>CONFLICT</span><h3>Contradiction handling</h3><p>Machine evidence outranks documentation. Conflicting evidence is retained, marked for adversarial evaluation, and escalated when confidence stays below threshold.</p></div><div><span>REUSE</span><h3>No duplicate analysis</h3><p>Single, batch, security, and design workflows reuse SourceManifest, EvidenceGraph, ControlMap, ControlResult, Verification, and ReportSnapshot contracts.</p></div></div></article>
+        <article class="panel orchestrator-visual-panel" id="orchestrator-visual-panel">
+          <div class="panel-title">
+            <div>
+              <h2>Live intake and orchestration visualizer</h2>
+              <p>Enter any project and watch intake, planning, action, reflection, and reporting flow through the algorithm.</p>
+            </div>
+            <span class="version-pill">PIPELINE SIMULATOR</span>
+          </div>
+          <div class="orchestrator-visual-layout">
+            <div class="orchestrator-control">
+              <label class="field-label" for="product-pipeline-project">Project for simulation</label>
+              <select class="input" id="product-pipeline-project"></select>
+              <label class="field-label" for="product-pipeline-speed">Animation speed</label>
+              <select class="input" id="product-pipeline-speed">
+                <option value="slow">Slow</option>
+                <option value="normal" selected>Normal</option>
+                <option value="fast">Fast</option>
+              </select>
+              <button class="primary" id="product-pipeline-run">Animate intake pipeline -></button>
+              <button class="ghost" id="toggle-high-visibility" type="button" aria-pressed="true">Visibility: High</button>
+              <div class="orchestrator-chip-row">
+                <span>Objective-driven</span>
+                <span>Agent orchestrated</span>
+                <span>Evidence-first</span>
+                <span>Transparent</span>
+              </div>
+              <div class="orchestrator-score">
+                <small>Current stage</small>
+                <b id="product-pipeline-stage">Idle</b>
+                <p id="product-pipeline-summary">Ready to simulate project intake and agent orchestration.</p>
+              </div>
+            </div>
+            <div class="orchestrator-canvas">
+              <div class="orchestrator-progress"><i id="product-pipeline-progress"></i></div>
+              <section class="orchestrator-hierarchy" id="product-agent-hierarchy"></section>
+              <div class="orchestrator-explainer" id="product-pipeline-explainer">Top-down pipeline is ready. Press animate to walk the project through orchestration, function agent models, evaluation, and independent assurance.</div>
+              <div class="orchestrator-live-commentary" id="product-live-commentary">GENZ LIVE: waiting for kickoff...</div>
+              <div class="orchestrator-stage-complete" id="product-stage-complete" aria-live="polite"></div>
+              <div class="orchestrator-log" id="product-pipeline-log"></div>
+              <article class="panel live-icon-hierarchy-panel">
+                <h3>Live icon hierarchy</h3>
+                <p>Layer highlights follow the active run stage and AI components.</p>
+                <div id="product-icon-hierarchy-live" class="mermaid live-icon-hierarchy" data-render-live="true"></div>
+                <div class="pipeline-icon-legend" id="pipeline-icon-legend" aria-live="polite">
+                  <div><span>Active</span><b id="pipeline-icon-active">Idle</b></div>
+                  <div><span>Completed</span><b id="pipeline-icon-completed">None</b></div>
+                  <div><span>Next</span><b id="pipeline-icon-next">Baseline intelligence gate</b></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+        <div class="product-layout">
+          <article class="panel playbook-panel"><div class="panel-title"><div><h2>Audit playbook</h2><p>Ten stages from baseline intelligence to remediation verification</p></div><span class="version-pill">ALGORITHM v1.3</span></div><div class="agent-tab-strip" id="playbook-agent-tabs"><button class="active" data-playbook-tab="stages">Playbook stages</button><button data-playbook-tab="agents">Agents algorithm</button></div><section class="agent-tab-panel active" data-playbook-panel="stages"><article class="playbook-reference-card" id="playbook-token-reference"><h3>Token and cost estimation algorithm</h3><p>Real-time reference updates from current source, selected frameworks, latest run context, and live governance mode.</p><div class="quality-row"><div><span>Waiting for context</span><b>Run an audit or change scope</b></div><div><small>The playbook shows static versus real-time token and cost comparison factors.</small></div></div></article><div class="playbook-flow">
+            <div class="playbook-step" data-playbook-stage="baseline"><span>01</span><div><b>Baseline intelligence gate</b><p>Check latest policy and framework sources, rebuild policy RAG, enforce freshness SLA, and pin immutable baseline manifest before downstream processing.</p></div><em>BaselineManifest</em></div>
+            <div class="playbook-step" data-playbook-stage="scope"><span>02</span><div><b>Scope & applicability</b><p>Identify system purpose, jurisdictions, industry, AI role, data subjects, deployment geography, and selected frameworks. Requirements outside the declared scope become not applicable-not passed.</p></div><em>AuditRequest</em></div>
+            <div class="playbook-step" data-playbook-stage="manifest"><span>03</span><div><b>Source manifest</b><p>Inventory files, commits, dependencies, infrastructure, policies, schemas, models, datasets, APIs, streams, stores, and deployment descriptors. Hash every artifact and preserve exclusions.</p></div><em>SourceManifest</em></div>
+            <div class="playbook-step" data-playbook-stage="discovery"><span>04</span><div><b>Architecture & data-flow discovery</b><p>Detect services, trust boundaries, identity paths, data stores, Kafka or streaming flows, training/inference pipelines, model registries, external processors, and regional movement.</p></div><em>AssetGraph</em></div>
+            <div class="playbook-step" data-playbook-stage="collection"><span>05</span><div><b>Deterministic collection</b><p>Run policy-as-code, SBOM, secret, IaC, configuration, access, encryption, dependency, and lineage checks before using AI reasoning.</p></div><em>RawEvidence[]</em></div>
+            <div class="playbook-step" data-playbook-stage="collection"><span>06</span><div><b>Evidence normalization</b><p>Convert scanner output into typed facts with source, digest, collector version, observation time, classification, confidence, and tenant boundary.</p></div><em>EvidenceGraph</em></div>
+            <div class="playbook-step" data-playbook-stage="mapping"><span>07</span><div><b>Canonical control mapping</b><p>Map one technical fact to shared controls, then map those controls to versioned GDPR, HIPAA, SOC 2, ISO, NIST, EU AI Act, PCI, CCPA, Defense, and DOE requirements.</p></div><em>ControlMap</em></div>
+            <div class="playbook-step" data-playbook-stage="evaluation"><span>08</span><div><b>Evaluation & scoring</b><p>Apply applicability, evidence freshness, confidence, severity, and critical-control caps. Missing evidence is unknown, never automatically pass or fail.</p></div><em>ControlResult[]</em></div>
+            <div class="playbook-step" data-playbook-stage="verification"><span>09</span><div><b>Adversarial verification</b><p>Blindly re-check all critical failures, low-confidence decisions, and a sample of passes using separate evidence selection and evaluation strategy.</p></div><em>Verification[]</em></div>
+            <div class="playbook-step" data-playbook-stage="reporting"><span>10</span><div><b>Report, remediate, re-test</b><p>Create an immutable snapshot with evidence links, verdicts, uncertainty, owners, recommended code and tools. Re-run affected controls after remediation.</p></div><em>ReportSnapshot</em></div>
+          </div></section><section class="agent-tab-panel" data-playbook-panel="agents"><div class="playbook-agent-filter"><p id="playbook-agent-filter-label">Showing all agents. Click a playbook stage to filter.</p><button class="ghost" id="playbook-agent-filter-clear" type="button">Clear filter</button></div><div id="playbook-agent-algorithm-list" class="agent-algorithm-list"></div></section></article>
+          <aside class="product-side"><article class="panel formula-card"><p class="eyebrow">SCORING ALGORITHM</p><h2>Risk-adjusted readiness</h2><div class="formula">SUM (applicable weight x verdict x confidence x freshness)<hr>SUM applicable weight</div><ul><li><b>Pass</b><span>1.0</span></li><li><b>Partial</b><span>0.5</span></li><li><b>Unknown</b><span>0.0 + evidence flag</span></li><li><b>Fail</b><span>0.0 + finding</span></li><li><b>Not applicable</b><span>excluded</span></li></ul><div class="critical-cap"><b>Critical cap</b><p>An unresolved critical control caps readiness at 69%, regardless of the weighted mean.</p></div></article><article class="panel evidence-strength"><h2>Evidence strength order</h2><ol><li><b>Observed runtime / signed record</b><span>Highest</span></li><li><b>Machine configuration / test result</b><span>Strong</span></li><li><b>Source code / IaC</b><span>Strong</span></li><li><b>Approved policy + implementation proof</b><span>Moderate</span></li><li><b>Documentation only</b><span>Weak</span></li><li><b>Interview or assertion only</b><span>Lowest</span></li></ol></article></aside>
+        </div>
+        <article class="panel extraction-panel"><div class="panel-title"><div><h2>What Aegis extracts and compares</h2><p>Data categories are minimized and mapped to a specific audit purpose</p></div><span class="secure">* Secrets excluded by default</span></div><div class="extraction-grid"><div><b>Application structure</b><p>Languages, modules, functions, APIs, dependencies, build files, tests, ownership, dead paths, complexity.</p><span>Compared with secure design, change control, testing, and accountability controls.</span></div><div><b>Infrastructure</b><p>Cloud resources, Kubernetes, containers, network boundaries, IAM, keys, backups, logging, resilience.</p><span>Compared with access, encryption, availability, monitoring, and recovery requirements.</span></div><div><b>Data models & flows</b><p>Entities, fields, classifications, sources, destinations, streams, retention, residency, consent, deletion.</p><span>Compared with minimization, purpose, rights, safeguards, lineage, and lifecycle rules.</span></div><div><b>AI systems</b><p>Models, prompts, training runs, datasets, features, metrics, bias, drift, explainability, oversight, limitations.</p><span>Compared with AI governance, transparency, accuracy, robustness, monitoring, and human oversight.</span></div><div><b>Policies & evidence</b><p>Policies, approvals, risk registers, incidents, access reviews, training, vendors, DPIAs, BAAs, test results.</p><span>Compared for coverage, implementation proof, owner, approval, freshness, and operating effectiveness.</span></div><div><b>Supply chain</b><p>SBOMs, packages, licenses, vulnerabilities, processors, model providers, external APIs, data recipients.</p><span>Compared with vendor risk, vulnerability management, disclosure, and third-party obligations.</span></div></div></article>
+        <article class="panel baseline-panel"><div class="panel-title"><div><h2>Current baseline registry</h2><p>Authoritative source, version, applicability, and monitoring status</p></div><span class="live-baseline">* 14 monitored baselines</span></div><div class="baseline-grid">
+          <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noreferrer"><div><span class="framework-logo">GDPR</span><em>LAW</em></div><h3>EU GDPR 2016/679</h3><p>Lawful basis, transparency, minimization, rights, security, DPIAs, processors, breaches, automated decisions.</p><small>Official Journal  -  consolidated changes monitored</small><b>Active baseline up</b></a>
+          <a href="https://www.hhs.gov/hipaa/for-professionals/security/index.html" target="_blank" rel="noreferrer"><div><span class="framework-logo">HIPAA</span><em>LAW</em></div><h3>HIPAA current Security Rule</h3><p>45 CFR Parts 160 and 164 administrative, physical, and technical safeguards. The 2024 cybersecurity update remains proposed; current rule stays authoritative.</p><small>HHS OCR  -  page reviewed Mar 19, 2026</small><b>Active + proposal watched up</b></a>
+          <a href="https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022" target="_blank" rel="noreferrer"><div><span class="framework-logo">SOC 2</span><em>ATTEST</em></div><h3>2017 TSC, revised points 2022</h3><p>Security, availability, processing integrity, confidentiality, and privacy criteria for service-organization controls.</p><small>AICPA & CIMA  -  official criteria resource</small><b>Current criteria up</b></a>
+          <a href="https://www.iso.org/standard/27001" target="_blank" rel="noreferrer"><div><span class="framework-logo">ISO</span><em>STANDARD</em></div><h3>ISO/IEC 27001:2022</h3><p>Risk-based ISMS requirements and Annex A controls; licensed standard text is not redistributed by Aegis.</p><small>ISO  -  edition 3</small><b>Current edition up</b></a>
+          <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noreferrer"><div><span class="framework-logo">NIST</span><em>VOLUNTARY</em></div><h3>NIST AI RMF 1.0</h3><p>Govern, Map, Measure, and Manage trustworthy AI risk. NIST states AI RMF 1.0 is under revision.</p><small>NIST  -  revision and critical-infrastructure profile monitored</small><b>1.0 active  -  revision watched up</b></a>
+          <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/" target="_blank" rel="noreferrer"><div><span class="framework-logo">EU AI</span><em>LAW</em></div><h3>EU AI Act 2024/1689</h3><p>Risk classification, prohibited practices, high-risk systems, GPAI, transparency, oversight, monitoring, accuracy and robustness.</p><small>Most provisions apply Aug 2, 2026; Art. 6(1) obligations Aug 2, 2027</small><b>Phased applicability up</b></a>
+          <a href="https://www.pcisecuritystandards.org/document_library/" target="_blank" rel="noreferrer"><div><span class="framework-logo">PCI</span><em>STANDARD</em></div><h3>PCI DSS v4.0.1</h3><p>Technical and operational requirements for cardholder-data environments; v4.0.1 is the supported active revision.</p><small>PCI SSC  -  document library monitored</small><b>Current version up</b></a>
+          <a href="https://cppa.ca.gov/regulations/" target="_blank" rel="noreferrer"><div><span class="framework-logo">CPRA</span><em>LAW</em></div><h3>CCPA / CPRA + 2026 regulations</h3><p>Consumer rights, sensitive information, risk assessments, cybersecurity audits, and automated decisionmaking requirements.</p><small>California CPPA  -  updated regulations effective Jan 1, 2026</small><b>Current regulations up</b></a>
+          <a href="https://www.iso.org/standard/42001" target="_blank" rel="noreferrer"><div><span class="framework-logo">42001</span><em>STANDARD</em></div><h3>ISO/IEC 42001:2023</h3><p>Requirements for establishing, operating, maintaining, and continually improving an AI management system.</p><small>ISO  -  edition 1  -  published Dec 2023</small><b>Current AI management standard up</b></a>
+          <a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence" target="_blank" rel="noreferrer"><div><span class="framework-logo">GAI</span><em>PROFILE</em></div><h3>NIST AI 600-1</h3><p>Cross-sector Generative AI Profile extending AI RMF 1.0 with generative-AI risks and recommended actions.</p><small>NIST  -  published Jul 2024  -  updated Apr 8, 2026</small><b>Current GenAI profile up</b></a>
+          <a href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/" target="_blank" rel="noreferrer"><div><span class="framework-logo">LLM</span><em>SECURITY</em></div><h3>OWASP LLM Top 10:2025</h3><p>Community application-security risks for LLM systems, including injection, disclosure, supply chain, and excessive agency.</p><small>OWASP GenAI Security Project  -  2025 edition</small><b>Security baseline up</b></a>
+          <a href="https://atlas.mitre.org/" target="_blank" rel="noreferrer"><div><span class="framework-logo">ATLAS</span><em>THREATS</em></div><h3>MITRE ATLAS</h3><p>Living AI threat knowledge base covering predictive, generative, and agentic AI tactics, techniques, mitigations, and cases.</p><small>MITRE  -  living knowledge base</small><b>Threat baseline up</b></a>
+          <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noreferrer"><div><span class="framework-logo">CSF</span><em>VOLUNTARY</em></div><h3>NIST CSF 2.0</h3><p>Six-function cybersecurity outcome taxonomy: Govern, Identify, Protect, Detect, Respond, and Recover.</p><small>NIST  -  published Feb 26, 2024  -  2026 resources monitored</small><b>Current security framework up</b></a>
+          <a href="https://www.nist.gov/news-events/news/2024/07/secure-software-development-practices-generative-ai-and-dual-use-foundation" target="_blank" rel="noreferrer"><div><span class="framework-logo">SSDF</span><em>PROFILE</em></div><h3>NIST SP 800-218A</h3><p>Secure software-development practices tailored to generative AI and dual-use foundation models.</p><small>NIST  -  released Jul 26, 2024  -  updated Jun 25, 2025</small><b>Current AI SSDF profile up</b></a>
         </div><div class="baseline-warning"><b>Baseline governance</b><p>Aegis must pin the exact source version used for every audit. A newer rule creates a new baseline; it must not silently rewrite an already issued report. Legal applicability and certification decisions require qualified counsel or an accredited assessor.</p></div></article>
       </section>
 
       <section class="view" id="new-audit">
-        <div class="page-head"><div><p class="eyebrow">NEW EVALUATION</p><h1>Audit an AI system</h1><p class="subtitle">Connect a source, choose your obligations, and let the agent team build the evidence map.</p></div><span class="secure">● Local-first analysis</span></div>
+        <div class="page-head"><div><p class="eyebrow">NEW EVALUATION</p><h1>Audit an AI system</h1><p class="subtitle">Connect a source, choose your obligations, and let the agent team build the evidence map.</p></div><span class="secure">* Local-first analysis</span></div>
+        <div class="workspace-shortcuts compact-shortcuts">
+          <button class="workspace-shortcut" data-go="batch"><b>Batch queue</b><small>Queue multiple projects with shared presets.</small></button>
+          <button class="workspace-shortcut" data-go="reports"><b>Latest report</b><small>Jump directly to the latest assurance output.</small></button>
+          <button class="workspace-shortcut" data-open-product-playbook="true"><b>Product playbook</b><small>See transparent stages, AI-agent responsibilities, and evidence flow.</small></button>
+          <button class="workspace-shortcut" data-open-product-pipeline="true"><b>Animated pipeline</b><small>Watch stage-by-stage agent execution and live orchestration.</small></button>
+        </div>
         <div class="wizard-grid">
           <div class="wizard-main panel">
             <div class="steps"><span class="active">1 <b>Source</b></span><i></i><span>2 <b>Scope</b></span><i></i><span>3 <b>Review</b></span></div>
             <h2>Where should we look?</h2><p>Source code and evidence stay in your environment. Secrets are automatically excluded.</p>
-            <div class="source-tabs"><button class="active" data-source="folder">▣ Project folder</button><button data-source="github">⌘ GitHub</button><button data-source="data">⌁ Data source</button></div>
-            <div class="dropzone" id="dropzone"><span class="upload">↑</span><h3>Drop your project folder here</h3><p>or select a local directory to scan</p><button class="ghost" id="browse">Browse folder</button><input type="file" id="folder-input" webkitdirectory multiple hidden><small>Supports application code, IaC, model cards, data schemas, and policy documents</small></div>
+            <div class="source-tabs"><button class="active" data-source="folder">Project folder</button><button data-source="github">GitHub repo</button><button data-source="design">Design evidence</button><button data-source="data">Data source</button></div>
+            <div class="dropzone" id="dropzone"><span class="upload"></span><h3>Drop your project folder here</h3><p>or select a local directory to scan</p><button class="ghost" id="browse">Browse folder</button><input type="file" id="folder-input" webkitdirectory multiple hidden><small>Supports application code, IaC, model cards, data schemas, and policy documents</small></div>
             <label class="field-label">Project name</label><input class="input" id="project-name" placeholder="e.g. Claims Intelligence Platform" value="Claims Intelligence Platform">
-            <div class="framework-picker"><div><h3>Compliance scope</h3><p>Select one or more frameworks. Aegis maps overlapping controls once.</p></div><button class="text-btn" id="select-all">Select all</button></div>
-            <div class="check-grid" id="check-grid"></div>
-            <button class="primary run" id="run-audit">Start agent evaluation <span>→</span></button>
+            <div class="framework-picker"><div><h3>Compliance packages</h3><p>Select one or more packages, then refine only if needed.</p></div><button class="text-btn" id="select-all">Select all frameworks</button></div>
+            <div class="workspace-shortcuts compact-shortcuts" id="compliance-package-grid"></div>
+            <details class="panel advanced-frameworks-panel" id="advanced-frameworks-panel">
+              <summary><b>Advanced framework selection</b><small>Open only if you need custom framework combinations.</small></summary>
+              <div class="check-grid" id="check-grid"></div>
+            </details>
+            <div class="audit-action-row">
+              <button class="primary run" id="run-audit">Start agent evaluation <span>-></span></button>
+            </div>
+            <div class="live-governance-controls">
+              <label class="batch-check live-governance-toggle"><input type="checkbox" id="live-governance-mode" checked> Use real-time LLM governance check</label>
+              <label class="live-governance-sla" for="compliance-sla-hours">Freshness SLA
+                <select id="compliance-sla-hours" aria-label="Compliance freshness SLA hours">
+                  <option value="6">6h</option>
+                  <option value="12">12h</option>
+                  <option value="24" selected>24h</option>
+                  <option value="48">48h</option>
+                  <option value="72">72h</option>
+                </select>
+              </label>
+              <button class="ghost" id="compliance-sla-mode-toggle" type="button" aria-pressed="true">SLA mode: Auto</button>
+              <button class="ghost run" id="refresh-live-governance" type="button">refresh Refresh latest compliance</button>
+            </div>
           </div>
-          <aside class="pipeline panel"><p class="eyebrow">YOUR AGENT TEAM</p><h2>8 specialists. One verdict.</h2><div class="pipeline-flow" id="pipeline-flow"></div><div class="privacy-note"><b>Private by design</b><p>Run scanners locally. Only normalized findings and evidence hashes reach the report layer.</p></div></aside>
+          <aside class="pipeline panel"><p class="eyebrow">YOUR AGENT TEAM</p><h2>10 specialists. One verdict.</h2><div class="pipeline-flow" id="pipeline-flow"></div><div class="privacy-note"><b>Private by design</b><p>Run scanners locally. Only normalized findings and evidence hashes reach the report layer.</p></div></aside>
         </div>
+        <article class="panel live-governance-panel" id="new-audit-live-governance-panel">
+          <div class="panel-title">
+            <div>
+              <h2>Live governance and AI technical preview</h2>
+              <p>Always-visible comparison for static versus real-time token, pricing, and current compliance baseline.</p>
+            </div>
+            <span class="version-pill">REAL-TIME MODE</span>
+          </div>
+          <div class="report-secondary-grid">
+            <article class="panel report-transparency-panel">
+              <div class="panel-title"><div><h2>Live governance mode</h2><p>Latest compliance and policy refresh posture</p></div></div>
+              <div id="new-audit-live-governance-status"></div>
+            </article>
+            <article class="panel report-performance-panel">
+              <div class="panel-title"><div><h2>AI technical landscape</h2><p>Static vs real-time token and pricing comparison before and during runs</p></div></div>
+              <div id="new-audit-ai-technical-preview"></div>
+            </article>
+            <article class="panel report-performance-panel">
+              <div class="panel-title"><div><h2>Feature completeness</h2><p>Validate the current product design against required capabilities before build or audit run.</p></div><button class="ghost" id="validate-feature-completeness" type="button">Validate design</button></div>
+              <div id="new-audit-feature-validation"></div>
+            </article>
+          </div>
+        </article>
+        <article class="panel audit-workspace-pipeline-panel" id="audit-workspace-pipeline">
+          <div class="panel-title">
+            <div>
+              <h2>Animated audit pipeline</h2>
+              <p>See how your project is consumed and which agents process each stage.</p>
+            </div>
+            <span class="version-pill">LIVE STAGE TRACE</span>
+          </div>
+          <div class="audit-pipeline-controls">
+            <div>
+              <small>Current stage</small>
+              <b id="audit-pipeline-current-stage">Idle</b>
+              <p id="audit-pipeline-current-detail">Waiting for project intake.</p>
+            </div>
+            <div class="audit-pipeline-actions">
+              <button class="ghost" id="audit-pipeline-play" type="button">Play slow animation</button>
+              <button class="ghost" id="audit-pipeline-stop" type="button">Reset pipeline</button>
+            </div>
+          </div>
+          <div class="audit-now-processing" id="audit-now-processing">
+            <div><small>Now processing</small><b id="audit-now-agent">Waiting</b></div>
+            <div><small>Agent stage</small><b id="audit-now-stage">Idle</b></div>
+            <div><small>Elapsed</small><b id="audit-now-elapsed">00:00</b></div>
+            <div><small>Est. remaining</small><b id="audit-now-remaining">--:--</b></div>
+          </div>
+          <div class="orchestrator-progress"><i id="audit-pipeline-progress"></i></div>
+          <div class="audit-pipeline-stage-track" id="audit-pipeline-stage-track"></div>
+          <article class="panel live-icon-hierarchy-panel audit-live-hierarchy-panel">
+            <h3>Icon hierarchy (simple)</h3>
+            <p>Live phase and layer highlights during animated execution.</p>
+            <div id="audit-icon-hierarchy-live" class="mermaid live-icon-hierarchy pipeline-stage-idle" data-render-live="true"></div>
+            <div class="audit-phase-strip" id="audit-phase-strip" aria-live="polite"></div>
+          </article>
+          <div class="audit-pipeline-agent-lane" id="audit-pipeline-agent-lane"></div>
+          <article class="audit-agent-detail" id="audit-agent-detail">
+            <h3 id="audit-agent-detail-title">Click an agent to inspect details</h3>
+            <p id="audit-agent-detail-summary">Agent responsibilities, processing method, and citations will appear here.</p>
+            <p id="audit-agent-detail-algorithm"></p>
+            <div class="agent-stage-filter-row" id="audit-agent-detail-citations"></div>
+          </article>
+        </article>
+        <article class="panel" id="new-audit-inline-report" hidden>
+          <div class="panel-title">
+            <div>
+              <h2>Latest audit report and scores</h2>
+              <p id="new-audit-report-meta">Run details appear here after evaluation.</p>
+            </div>
+            <button class="ghost" id="open-full-report" type="button" data-go="reports">Open full report</button>
+          </div>
+          <div class="quality-row">
+            <div><span>Live run status</span><b id="new-audit-live-stage">Idle</b></div>
+            <div><small id="new-audit-live-note">Waiting for next run</small></div>
+          </div>
+          <div class="quality-row" style="margin-top:8px;">
+            <div><span>Live progress score</span><b id="new-audit-live-percent">0%</b></div>
+            <div class="mini-progress"><i id="new-audit-live-bar" style="width:0%"></i></div>
+          </div>
+          <div class="analysis-state-banner" id="analysis-state-banner">
+            <div>
+              <small>PROJECT ANALYSIS STATUS</small>
+              <b id="analysis-state-title">Not analyzed yet</b>
+              <p id="analysis-state-note">Run an evaluation to generate project intelligence tiles and drill-down insights.</p>
+            </div>
+            <span class="analysis-state-pill" id="analysis-state-pill">Idle</span>
+          </div>
+          <div class="project-insight-tiles" id="project-insight-tiles">
+            <button type="button" class="project-insight-tile" data-insight-target="report-findings-section" data-insight-filter="all"><small>Open findings</small><b id="insight-open-findings">0</b><p>Priority remediation items from the latest run.</p></button>
+            <button type="button" class="project-insight-tile" data-insight-target="report-run-context-section" data-insight-filter="all"><small>Framework scope</small><b id="insight-framework-count">0</b><p>Frameworks applied to this project evaluation.</p></button>
+            <button type="button" class="project-insight-tile" data-insight-target="report-policy-sync-section" data-insight-filter="all"><small>Policy sync</small><b id="insight-policy-sync">Pending</b><p>Knowledge base and baseline status for this run.</p></button>
+            <button type="button" class="project-insight-tile" data-insight-target="report-findings-section" data-insight-filter="high"><small>High-risk gaps</small><b id="insight-high-risk">0</b><p>Critical and high-priority issues that need action first.</p></button>
+          </div>
+          <div class="report-banner">
+            <div class="grade" id="new-audit-report-grade">B+</div>
+            <div>
+              <small>OVERALL VERDICT</small>
+              <h2 id="new-audit-overall-verdict">Conditionally ready</h2>
+              <p id="new-audit-overall-summary">Evaluation summary will appear here.</p>
+            </div>
+            <div class="report-score"><b id="new-audit-readiness-score">82%</b><span>readiness</span></div>
+          </div>
+          <div class="verdicts" style="margin-top:10px;">
+            <span><b id="new-audit-passed-count">0</b> Passed</span>
+            <span><b id="new-audit-needs-evidence-count">0</b> Needs evidence</span>
+            <span><b id="new-audit-failed-count">0</b> Failed</span>
+          </div>
+          <div class="report-secondary-grid" style="margin-top:12px;">
+            <article class="panel report-performance-panel">
+              <div class="panel-title"><div><h2>Run context</h2><p>Current source and report identity</p></div></div>
+              <div id="new-audit-run-context"></div>
+            </article>
+            <article class="panel report-transparency-panel">
+              <div class="panel-title"><div><h2>Policy and knowledge sync</h2><p>Updated resources pinned to this run</p></div></div>
+              <div id="new-audit-policy-sync"></div>
+            </article>
+            <article class="panel report-performance-panel" id="new-audit-ai-technical-section">
+              <div class="panel-title"><div><h2>AI technical landscape</h2><p>Token profile and recommended stack from current project context</p></div></div>
+              <div id="new-audit-ai-technical"></div>
+            </article>
+          </div>
+          <article class="panel" style="margin-top:12px;">
+            <div class="panel-title"><div><h2>Transparent processing steps</h2><p>How this result was produced, stage by stage</p></div><button class="ghost" id="new-audit-view-pipeline" type="button">View animated pipeline</button></div>
+            <div id="new-audit-processing-steps" class="processing-steps"></div>
+          </article>
+          <p class="report-copy" id="new-audit-exec-summary" style="margin-top:10px;">Run a new audit to generate execution summary and recommendations.</p>
+          <article class="panel findings" style="margin-top:12px;">
+            <div class="panel-title"><div><h2>Top remediation items</h2><p>Immediate actions from this run</p></div></div>
+            <div id="new-audit-finding-list"></div>
+          </article>
+        </article>
       </section>
 
       <section class="view" id="design">
-        <div class="page-head"><div><p class="eyebrow">PROPOSED-SYSTEM REVIEW</p><h1>Analyze a design</h1><p class="subtitle">Turn architecture documents and known technical context into a policy-aware, implementation-ready target design.</p></div><span class="reuse-badge">↻ Uses Aegis Audit Algorithm v1.0</span></div>
-        <div class="design-intake-grid"><article class="panel design-upload"><div class="panel-title"><div><h2>1. Add design evidence</h2><p>Multiple formats can be evaluated in one design package</p></div><span class="secure">● Local intake</span></div><label class="design-drop" for="design-files"><span>↑</span><h3>Drop proposed-design files here</h3><p>PDF · PPT/PPTX · DOC/DOCX · XLS/XLSX · CSV · JSON · YAML · Markdown · images · diagrams</p><em>Select files</em><input id="design-files" type="file" multiple accept=".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.json,.yaml,.yml,.md,.txt,.png,.jpg,.jpeg,.svg,.drawio" hidden></label><div id="design-file-list" class="design-file-list"><div><span>PDF</span><b>Future_State_AI_Platform.pdf</b><small>2.8 MB · 24 pages</small><em>Ready</em></div><div><span>PPT</span><b>Data_Flow_Review.pptx</b><small>6.1 MB · 18 slides</small><em>Ready</em></div></div><div class="extraction-preview"><b>Expected extraction</b><span>Text</span><span>Tables</span><span>Diagrams</span><span>Components</span><span>Data flows</span><span>Requirements</span><span>Assumptions</span></div></article>
+        <div class="page-head"><div><p class="eyebrow">PROPOSED-SYSTEM REVIEW</p><h1>Analyze a design</h1><p class="subtitle">Turn architecture documents and known technical context into a policy-aware, implementation-ready target design.</p></div><span class="reuse-badge">refresh Uses Aegis Audit Algorithm v1.0</span></div>
+        <div class="design-intake-grid"><article class="panel design-upload"><div class="panel-title"><div><h2>1. Add design evidence</h2><p>Multiple formats can be evaluated in one design package</p></div><span class="secure">* Local intake</span></div><label class="design-drop" for="design-files"><span></span><h3>Drop proposed-design files here</h3><p>PDF  -  PPT/PPTX  -  DOC/DOCX  -  XLS/XLSX  -  CSV  -  JSON  -  YAML  -  Markdown  -  images  -  diagrams</p><em>Select files</em><input id="design-files" type="file" multiple accept=".pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.json,.yaml,.yml,.md,.txt,.png,.jpg,.jpeg,.svg,.drawio" hidden></label><div id="design-file-list" class="design-file-list"><div><span>PDF</span><b>Future_State_AI_Platform.pdf</b><small>2.8 MB  -  24 pages</small><em>Ready</em></div><div><span>PPT</span><b>Data_Flow_Review.pptx</b><small>6.1 MB  -  18 slides</small><em>Ready</em></div></div><div class="extraction-preview"><b>Expected extraction</b><span>Text</span><span>Tables</span><span>Diagrams</span><span>Components</span><span>Data flows</span><span>Requirements</span><span>Assumptions</span></div></article>
           <article class="panel design-context"><div class="panel-title"><div><h2>2. Current technical landscape</h2><p>Unknown answers create discovery actions, not compliance failures</p></div><button class="text-btn" id="dont-know-all">Set all to Don't know</button></div><div class="question-grid">
             <label>Primary deployment<select class="landscape-answer"><option>Cloud</option><option>On-premises</option><option>Hybrid</option><option>Edge / disconnected</option><option selected>Don't know</option></select></label>
             <label>Cloud or platform<select class="landscape-answer"><option>AWS</option><option>Azure</option><option>Google Cloud</option><option>Kubernetes</option><option>Multiple platforms</option><option selected>Don't know</option></select></label>
@@ -150,129 +452,200 @@
             <label>AI implementation<select class="landscape-answer"><option>Predictive ML</option><option>Generative AI / RAG</option><option>AI agents</option><option>Mixed AI portfolio</option><option>No AI yet</option><option selected>Don't know</option></select></label>
             <label>Sensitive data<select class="landscape-answer"><option>Personal data</option><option>Health data</option><option>Payment data</option><option>Controlled / export data</option><option>Multiple categories</option><option selected>Don't know</option></select></label>
             <label>Identity and access<select class="landscape-answer"><option>Enterprise SSO</option><option>Cloud IAM</option><option>Application-local</option><option>Multiple systems</option><option selected>Don't know</option></select></label>
-          </div><label class="design-objective">Primary design objective<textarea id="design-objective" rows="3">Create a scalable, controlled AI audit platform that can process regulated projects without exposing source data.</textarea></label><button class="primary full" id="generate-design">Analyze evidence and propose architecture →</button></article></div>
+          </div><label class="design-objective">Primary design objective<textarea id="design-objective" rows="3">Create a scalable, controlled AI audit platform that can process regulated projects without exposing source data.</textarea></label><button class="primary full" id="generate-design">Analyze evidence and propose architecture -></button></article></div>
 
-        <div class="design-process-strip"><div><span>1</span><b>Scope</b><small>Questions + applicability</small></div><i>→</i><div><span>2</span><b>Extract</b><small>Files + diagrams</small></div><i>→</i><div><span>3</span><b>Normalize</b><small>Evidence graph</small></div><i>→</i><div><span>4</span><b>Compare</b><small>14 baselines</small></div><i>→</i><div><span>5</span><b>Propose</b><small>Reusable modules</small></div><i>→</i><div><span>6</span><b>Verify</b><small>Assumptions + gaps</small></div></div>
+        <div class="design-process-strip"><div><span>1</span><b>Scope</b><small>Questions + applicability</small></div><i>-></i><div><span>2</span><b>Extract</b><small>Files + diagrams</small></div><i>-></i><div><span>3</span><b>Normalize</b><small>Evidence graph</small></div><i>-></i><div><span>4</span><b>Compare</b><small>14 baselines</small></div><i>-></i><div><span>5</span><b>Propose</b><small>Reusable modules</small></div><i>-></i><div><span>6</span><b>Verify</b><small>Assumptions + gaps</small></div></div>
 
         <section id="design-proposal" class="design-proposal">
           <div class="proposal-head"><div><p class="eyebrow">PROPOSED TARGET STATE</p><h2>Controlled AI audit platform</h2><p>Modular, evidence-led architecture optimized for regulated and disconnected environments.</p></div><div><span>DESIGN CONFIDENCE</span><b>78%</b><small>8 discovery questions remain</small></div></div>
-          <article class="panel hierarchy-panel"><div class="panel-title"><div><h2>Hierarchical system design</h2><p>Ownership and dependency boundaries from experience to infrastructure</p></div><span class="version-pill">TARGET v1</span></div><div class="hierarchy-map"><div class="hierarchy-level"><small>L1 · EXPERIENCE</small><div><span><b>Web workspace</b><em>Audit · batch · design · reports</em></span><span><b>CLI / CI integration</b><em>Automated project intake</em></span></div></div><i>↓ authenticated commands + progress events</i><div class="hierarchy-level"><small>L2 · APPLICATION</small><div><span><b>Audit API</b><em>Tenancy · lifecycle · RBAC</em></span><span><b>Workflow orchestrator</b><em>DAG · budgets · retry · cancel</em></span><span><b>Report service</b><em>Snapshots · signatures · export</em></span></div></div><i>↓ typed tasks + immutable evidence references</i><div class="hierarchy-level"><small>L3 · DOMAIN</small><div><span><b>Source discovery</b><em>Manifest · architecture graph</em></span><span><b>Control engine</b><em>Canonical map · applicability</em></span><span><b>Evaluator</b><em>Verdict · confidence · scoring</em></span><span><b>Verifier</b><em>Blind risk-based review</em></span></div></div><i>↓ capability-routed execution</i><div class="hierarchy-level ai-level"><small>L4 · AI & SCANNERS</small><div><span><b>Deterministic scanners</b><em>SBOM · IaC · secrets · policy</em></span><span><b>AI analysis workers</b><em>Architecture · data · model risk</em></span><span><b>AI security workers</b><em>RAG · agents · supply chain</em></span></div></div><i>↓ tenant-scoped ports and adapters</i><div class="hierarchy-level"><small>L5 · DATA & PLATFORM</small><div><span><b>PostgreSQL</b><em>Jobs · controls · findings</em></span><span><b>Object storage</b><em>Evidence · reports · manifests</em></span><span><b>Durable queue</b><em>Priority · backpressure · DLQ</em></span><span><b>Telemetry</b><em>Logs · traces · token ledger</em></span></div></div><i>↓ rootless isolated runtime</i><div class="hierarchy-level foundation"><small>L6 · INFRASTRUCTURE</small><div><span><b>Control plane</b><em>Private application network</em></span><span><b>Sandbox workers</b><em>Network denied · disposable</em></span><span><b>Key management</b><em>Tenant envelope encryption</em></span></div></div></div></article>
-          <div class="proposal-components"><article class="panel"><h2>Database components</h2><div class="proposal-list"><div><span>PG</span><b>Audit metadata</b><small>Tenant, job, asset, control, finding, verification, outbox</small></div><div><span>OBJ</span><b>Evidence store</b><small>Content-addressed immutable artifacts and report snapshots</small></div><div><span>VEC</span><b>Scoped retrieval index</b><small>Optional, per-tenant policy/evidence retrieval with source citations</small></div><div><span>LOG</span><b>Append-only provenance</b><small>Baseline, prompt, model, rule, decision, and access events</small></div></div></article><article class="panel"><h2>Application components</h2><div class="proposal-list"><div><span>API</span><b>Control plane</b><small>Authentication, authorization, tenancy, quotas, audit state</small></div><div><span>DAG</span><b>Orchestrator</b><small>Idempotent tasks, checkpoints, retry budget, cancellation</small></div><div><span>MAP</span><b>Control graph</b><small>Shared evidence mapped to versioned framework requirements</small></div><div><span>RPT</span><b>Report publisher</b><small>Immutable HTML, PDF, JSON, and SARIF delivery</small></div></div></article><article class="panel"><h2>AI components & token plan</h2><div class="proposal-list"><div><span>DISC</span><b>Design discovery</b><small>420K input · 38K output · diagrams and requirements</small></div><div><span>DATA</span><b>Data-policy analyst</b><small>310K input · 32K output · models, flows, classifications</small></div><div><span>SEC</span><b>AI security analyst</b><small>390K input · 44K output · RAG, agent, model supply chain</small></div><div><span>VER</span><b>Independent verifier</b><small>140K input · 18K output · critical and unknown decisions</small></div></div></article></div>
-          <article class="panel design-token-plan"><div class="panel-title"><div><h2>Projected analysis consumption</h2><p>Medium design package · 42 pages/slides · 8 contextual answers</p></div><span class="estimate-note"><span>ESTIMATE</span> Actual usage captured per run</span></div><div class="design-token-summary"><div><small>Document extraction</small><b>0 tokens</b><span>Local parsers first</span></div><div><small>Model input</small><b>1.26M</b><span>62% cache eligible</span></div><div><small>Model output</small><b>132K</b><span>Structured + narrative</span></div><div><small>Model calls</small><b>94</b><span>Bounded parallel tasks</span></div><div><small>Estimated latency</small><b>12–21m</b><span>3 worker slots</span></div></div></article>
-          <article class="panel assumptions-panel"><div class="panel-title"><div><h2>Unknowns and validation plan</h2><p>“Don't know” responses become explicit discovery items</p></div><span class="tag neutral">8 OPEN</span></div><div class="assumption-grid"><div><b>Deployment boundary</b><p>Inspect IaC and deployment diagrams; confirm disconnected or cloud operating mode.</p><span>Owner: Platform architecture</span></div><div><b>Data classification</b><p>Sample schemas and policy catalog; identify controlled, health, personal, and payment data.</p><span>Owner: Data governance</span></div><div><b>Identity provider</b><p>Verify SSO, service identities, privileged access, and emergency access flows.</p><span>Owner: IAM</span></div><div><b>AI model sources</b><p>Inventory hosted, local, open-weight, fine-tuned, and embedded models with licenses.</p><span>Owner: AI platform</span></div></div></article>
+          <article class="panel hierarchy-panel"><div class="panel-title"><div><h2>Hierarchical system design</h2><p>Ownership and dependency boundaries from experience to infrastructure</p></div><span class="version-pill">TARGET v1</span></div><div class="hierarchy-map"><div class="hierarchy-level"><small>L1  -  EXPERIENCE</small><div><span><b>Web workspace</b><em>Audit  -  batch  -  design  -  reports</em></span><span><b>CLI / CI integration</b><em>Automated project intake</em></span></div></div><i>down authenticated commands + progress events</i><div class="hierarchy-level"><small>L2  -  APPLICATION</small><div><span><b>Audit API</b><em>Tenancy  -  lifecycle  -  RBAC</em></span><span><b>Workflow orchestrator</b><em>DAG  -  budgets  -  retry  -  cancel</em></span><span><b>Report service</b><em>Snapshots  -  signatures  -  export</em></span></div></div><i>down typed tasks + immutable evidence references</i><div class="hierarchy-level"><small>L3  -  DOMAIN</small><div><span><b>Source discovery</b><em>Manifest  -  architecture graph</em></span><span><b>Control engine</b><em>Canonical map  -  applicability</em></span><span><b>Evaluator</b><em>Verdict  -  confidence  -  scoring</em></span><span><b>Verifier</b><em>Blind risk-based review</em></span></div></div><i>down capability-routed execution</i><div class="hierarchy-level ai-level"><small>L4  -  AI & SCANNERS</small><div><span><b>Deterministic scanners</b><em>SBOM  -  IaC  -  secrets  -  policy</em></span><span><b>AI analysis workers</b><em>Architecture  -  data  -  model risk</em></span><span><b>AI security workers</b><em>RAG  -  agents  -  supply chain</em></span></div></div><i>down tenant-scoped ports and adapters</i><div class="hierarchy-level"><small>L5  -  DATA & PLATFORM</small><div><span><b>PostgreSQL</b><em>Jobs  -  controls  -  findings</em></span><span><b>Object storage</b><em>Evidence  -  reports  -  manifests</em></span><span><b>Durable queue</b><em>Priority  -  backpressure  -  DLQ</em></span><span><b>Telemetry</b><em>Logs  -  traces  -  token ledger</em></span></div></div><i>down rootless isolated runtime</i><div class="hierarchy-level foundation"><small>L6  -  INFRASTRUCTURE</small><div><span><b>Control plane</b><em>Private application network</em></span><span><b>Sandbox workers</b><em>Network denied  -  disposable</em></span><span><b>Key management</b><em>Tenant envelope encryption</em></span></div></div></div></article>
+          <div class="proposal-components"><article class="panel"><h2>Database components</h2><div class="proposal-list"><div><span>PG</span><b>Audit metadata</b><small>Tenant, job, asset, control, finding, verification, outbox</small></div><div><span>OBJ</span><b>Evidence store</b><small>Content-addressed immutable artifacts and report snapshots</small></div><div><span>VEC</span><b>Scoped retrieval index</b><small>Optional, per-tenant policy/evidence retrieval with source citations</small></div><div><span>LOG</span><b>Append-only provenance</b><small>Baseline, prompt, model, rule, decision, and access events</small></div></div></article><article class="panel"><h2>Application components</h2><div class="proposal-list"><div><span>API</span><b>Control plane</b><small>Authentication, authorization, tenancy, quotas, audit state</small></div><div><span>DAG</span><b>Orchestrator</b><small>Idempotent tasks, checkpoints, retry budget, cancellation</small></div><div><span>MAP</span><b>Control graph</b><small>Shared evidence mapped to versioned framework requirements</small></div><div><span>RPT</span><b>Report publisher</b><small>Immutable HTML, PDF, JSON, and SARIF delivery</small></div></div></article><article class="panel"><h2>AI components & token plan</h2><div class="proposal-list"><div><span>DISC</span><b>Design discovery</b><small>420K input  -  38K output  -  diagrams and requirements</small></div><div><span>DATA</span><b>Data-policy analyst</b><small>310K input  -  32K output  -  models, flows, classifications</small></div><div><span>SEC</span><b>AI security analyst</b><small>390K input  -  44K output  -  RAG, agent, model supply chain</small></div><div><span>VER</span><b>Independent verifier</b><small>140K input  -  18K output  -  critical and unknown decisions</small></div></div></article></div>
+          <article class="panel design-token-plan"><div class="panel-title"><div><h2>Projected analysis consumption</h2><p>Medium design package  -  42 pages/slides  -  8 contextual answers</p></div><span class="estimate-note"><span>ESTIMATE</span> Actual usage captured per run</span></div><div class="design-token-summary"><div><small>Document extraction</small><b>0 tokens</b><span>Local parsers first</span></div><div><small>Model input</small><b>1.26M</b><span>62% cache eligible</span></div><div><small>Model output</small><b>132K</b><span>Structured + narrative</span></div><div><small>Model calls</small><b>94</b><span>Bounded parallel tasks</span></div><div><small>Estimated latency</small><b>12-21m</b><span>3 worker slots</span></div></div></article>
+          <article class="panel assumptions-panel"><div class="panel-title"><div><h2>Unknowns and validation plan</h2><p>"Don't know" responses become explicit discovery items</p></div><span class="tag neutral">8 OPEN</span></div><div class="assumption-grid"><div><b>Deployment boundary</b><p>Inspect IaC and deployment diagrams; confirm disconnected or cloud operating mode.</p><span>Owner: Platform architecture</span></div><div><b>Data classification</b><p>Sample schemas and policy catalog; identify controlled, health, personal, and payment data.</p><span>Owner: Data governance</span></div><div><b>Identity provider</b><p>Verify SSO, service identities, privileged access, and emergency access flows.</p><span>Owner: IAM</span></div><div><b>AI model sources</b><p>Inventory hosted, local, open-weight, fine-tuned, and embedded models with licenses.</p><span>Owner: AI platform</span></div></div></article>
         </section>
       </section>
 
       <section class="view" id="batch">
-        <div class="page-head"><div><p class="eyebrow">BATCH AUDIT OPERATIONS</p><h1>Process multiple projects</h1><p class="subtitle">Queue folders and repositories, apply shared framework presets, and control concurrency from one run.</p></div><div><button class="ghost" id="add-batch-projects">＋ Add sample projects</button> <button class="primary small" id="start-batch">▶ Start batch</button></div></div>
-        <div class="batch-summary"><article><span class="batch-icon">▤</span><div><small>Projects</small><b id="batch-total">8</b><p>in current batch</p></div></article><article><span class="batch-icon running">◌</span><div><small>Processing</small><b id="batch-running">2</b><p>3 worker slots</p></div></article><article><span class="batch-icon success">✓</span><div><small>Completed</small><b id="batch-completed">2</b><p>25% of batch</p></div></article><article><span class="batch-icon failed">!</span><div><small>Needs attention</small><b id="batch-failed">1</b><p>retryable failure</p></div></article><article><span class="batch-icon token">AI</span><div><small>Projected tokens</small><b>9.8M</b><p>63% cache eligible</p></div></article></div>
-        <div class="batch-layout"><article class="panel batch-queue"><div class="batch-toolbar"><div><h2>Processing queue</h2><p>Batch ID BAT-2026-0808-04 · created today</p></div><div><button class="ghost" id="pause-batch">Ⅱ Pause</button><button class="ghost">≡ Filters</button></div></div><div class="batch-progress"><div><span>Overall progress</span><b id="batch-percent">38%</b></div><div class="progress"><i id="batch-progress-bar" style="width:38%"></i></div></div><div class="batch-table-wrap"><table class="batch-table"><thead><tr><th>PROJECT</th><th>SOURCE</th><th>FRAMEWORK PRESET</th><th>STAGE</th><th>PROGRESS</th><th>AI BUDGET</th><th>ACTION</th></tr></thead><tbody id="batch-table"></tbody></table></div></article>
-          <aside class="batch-side"><article class="panel batch-config"><div class="panel-title"><div><h2>Batch configuration</h2><p>Applied to newly queued projects</p></div></div><label>Framework preset<select id="batch-preset"><option>AI + privacy baseline</option><option>Healthcare regulated</option><option>Enterprise assurance</option><option>Full 12-framework scan</option></select></label><label>Concurrent projects<select id="batch-concurrency"><option>1 · conservative</option><option selected>3 · balanced</option><option>5 · high throughput</option></select></label><label>Failure policy<select><option>Retry twice, then continue</option><option>Pause entire batch</option><option>Continue without retry</option></select></label><label class="batch-check"><input type="checkbox" checked> Reuse unchanged evidence</label><label class="batch-check"><input type="checkbox" checked> Verify all critical findings</label><div class="capacity-note"><b>Recommended sweet spot</b><p>Three concurrent projects keeps model rate limits, worker memory, and repository isolation balanced for this estimated workload.</p></div></article><article class="panel batch-savings"><h2>Batch optimization</h2><div><span>Shared policy context</span><b>−1.8M tokens</b></div><div><span>Evidence digest cache</span><b>−0.9M tokens</b></div><div><span>Deduplicated controls</span><b>−31% checks</b></div><small>Estimated savings compared with isolated full audits.</small></article></aside>
+        <div class="page-head"><div><p class="eyebrow">BATCH AUDIT OPERATIONS</p><h1>Process multiple projects</h1><p class="subtitle">Queue folders and repositories, apply shared framework presets, and control concurrency from one run.</p></div><div><button class="ghost" id="add-batch-projects">Add sample projects</button> <button class="primary small" id="start-batch">Start batch</button></div></div>
+        <div class="batch-summary"><article><span class="batch-icon">PJ</span><div><small>Projects</small><b id="batch-total">8</b><p>in current batch</p></div></article><article><span class="batch-icon running">RN</span><div><small>Processing</small><b id="batch-running">2</b><p>3 worker slots</p></div></article><article><span class="batch-icon success">DN</span><div><small>Completed</small><b id="batch-completed">2</b><p>25% of batch</p></div></article><article><span class="batch-icon failed">AT</span><div><small>Needs attention</small><b id="batch-failed">1</b><p>retryable failure</p></div></article><article><span class="batch-icon token">AI</span><div><small>Projected tokens</small><b>9.8M</b><p>63% cache eligible</p></div></article></div>
+        <div class="batch-layout"><article class="panel batch-queue"><div class="batch-toolbar"><div><h2>Processing queue</h2><p>Batch ID BAT-2026-0808-04  -  created today</p></div><div><button class="ghost" id="pause-batch">Pause</button><button class="ghost">Filters</button></div></div><div class="batch-progress"><div><span>Overall progress</span><b id="batch-percent">38%</b></div><div class="progress"><i id="batch-progress-bar" style="width:38%"></i></div></div><div class="batch-table-wrap"><table class="batch-table"><thead><tr><th>PROJECT</th><th>SOURCE</th><th>FRAMEWORK PRESET</th><th>STAGE</th><th>PROGRESS</th><th>AI BUDGET</th><th>ACTION</th></tr></thead><tbody id="batch-table"></tbody></table></div></article>
+          <aside class="batch-side"><article class="panel batch-config"><div class="panel-title"><div><h2>Batch configuration</h2><p>Applied to newly queued projects</p></div></div><label>Framework preset<select id="batch-preset"><option>AI + privacy baseline</option><option>Healthcare regulated</option><option>Enterprise assurance</option><option>Full 12-framework scan</option></select></label><label>Concurrent projects<select id="batch-concurrency"><option>1  -  conservative</option><option selected>3  -  balanced</option><option>5  -  high throughput</option></select></label><label>Failure policy<select><option>Retry twice, then continue</option><option>Pause entire batch</option><option>Continue without retry</option></select></label><label class="batch-check"><input type="checkbox" checked> Reuse unchanged evidence</label><label class="batch-check"><input type="checkbox" checked> Verify all critical findings</label><div class="capacity-note"><b>Recommended sweet spot</b><p>Three concurrent projects keeps model rate limits, worker memory, and repository isolation balanced for this estimated workload.</p></div></article><article class="panel batch-savings"><h2>Batch optimization</h2><div><span>Shared policy context</span><b>-1.8M tokens</b></div><div><span>Evidence digest cache</span><b>-0.9M tokens</b></div><div><span>Deduplicated controls</span><b>-31% checks</b></div><small>Estimated savings compared with isolated full audits.</small></article></aside>
         </div>
       </section>
 
       <section class="view" id="agents">
         <div class="page-head"><div><p class="eyebrow">AGENT STUDIO</p><h1>Your audit workforce</h1><p class="subtitle">Purpose-built agents inspect, challenge, and independently verify every conclusion.</p></div><button class="ghost">Configure guardrails</button></div>
-        <div class="agent-map panel"><div class="agent-core"><span>✦</span><b>Orchestrator</b><small>Plans · delegates · synthesizes</small></div><div class="orbit" id="agent-orbit"></div></div>
+        <div class="agent-map panel"><div class="agent-core"><span>OR</span><b>Orchestrator</b><small>Plans  -  delegates  -  synthesizes</small></div><div class="orbit" id="agent-orbit"></div></div>
         <div class="agent-cards" id="agent-cards"></div>
+        <div class="report-primary-grid" style="margin-top:14px;">
+          <article class="panel report-summary-panel">
+            <div class="panel-title"><div><h2>Framework policy chat</h2><p>Ask about frameworks, policies, baseline rules, and product gaps.</p></div><span class="verified">RAG READY</span></div>
+            <div class="agent-stage-filter-row" id="policy-chat-prompts">
+              <button type="button" data-chat-prompt="What frameworks are active for CUI and ITAR?">CUI / ITAR frameworks</button>
+              <button type="button" data-chat-prompt="What are the biggest product gaps right now?">Top product gaps</button>
+              <button type="button" data-chat-prompt="How are policies compared against source code or design evidence?">Policy comparison method</button>
+            </div>
+            <div class="quality-row"><div><span>Knowledge base</span><b id="policy-rag-count">0 documents</b></div><div><small id="policy-rag-updated">Not refreshed</small></div></div>
+            <label class="field-label" for="policy-chat-input">Ask a policy or gap question</label>
+            <textarea class="input" id="policy-chat-input" rows="4" placeholder="Example: What policy gaps apply to a high-level PowerPoint design review for a CUI system?"></textarea>
+            <div class="audit-action-row">
+              <button class="primary run" id="policy-chat-send" type="button">Ask policy assistant <span>-></span></button>
+              <button class="ghost run" id="policy-rag-refresh" type="button">refresh Refresh knowledge base</button>
+            </div>
+          </article>
+          <article class="panel report-transparency-panel">
+            <div class="panel-title"><div><h2>Assistant answer</h2><p>Grounded on baselined framework, policy, and gap records</p></div></div>
+            <div id="policy-chat-answer" class="report-copy">Ask a question to retrieve the most relevant framework and policy records.</div>
+            <div id="policy-chat-citations"></div>
+          </article>
+        </div>
       </section>
 
       <section class="view" id="deep-analysis">
-        <div class="page-head"><div><p class="eyebrow">TECHNICAL INTELLIGENCE</p><h1>Deep analysis</h1><p class="subtitle">Trace implementation quality from architecture and functions through governed data and policy obligations.</p></div><div><button class="ghost">Scope: Full project ⌄</button> <button class="primary small" id="rerun-analysis">↻ Re-run analysis</button></div></div>
+        <div class="page-head"><div><p class="eyebrow">TECHNICAL INTELLIGENCE</p><h1>Deep analysis</h1><p class="subtitle">Trace implementation quality from architecture and functions through governed data and policy obligations.</p></div><div><button class="ghost">Scope: Full project v</button> <button class="primary small" id="rerun-analysis">refresh Re-run analysis</button></div></div>
         <div class="analysis-summary">
-          <article class="analysis-score-card"><div class="score-ring"><b>72</b><span>/100</span></div><div><small>TECHNICAL QUALITY</small><h2>Needs targeted improvement</h2><p>Good modular intent, with material gaps in data contracts, naming consistency, and policy enforcement.</p></div></article>
-          <article class="analysis-metric"><span class="metric-icon greenish">▦</span><div><small>Modules analyzed</small><b>48</b><p>5 require restructuring</p></div></article>
-          <article class="analysis-metric"><span class="metric-icon amberish">ƒ</span><div><small>Functions inspected</small><b>327</b><p>31 high complexity</p></div></article>
-          <article class="analysis-metric"><span class="metric-icon blueish">◇</span><div><small>Data entities</small><b>64</b><p>12 policy gaps</p></div></article>
+          <article class="analysis-score-card analysis-drill-card" data-analysis-jump="dead-code" data-analysis-filter="all"><div class="score-ring"><b>72</b><span>/100</span></div><div><small>TECHNICAL QUALITY</small><h2>Needs targeted improvement</h2><p>Good modular intent, with material gaps in data contracts, naming consistency, and policy enforcement.</p></div></article>
+          <article class="analysis-metric analysis-drill-card" data-analysis-jump="modules" data-analysis-filter="all"><span class="metric-icon greenish">#</span><div><small>Modules analyzed</small><b>48</b><p>5 require restructuring</p></div></article>
+          <article class="analysis-metric analysis-drill-card" data-analysis-jump="functions" data-analysis-filter="high"><span class="metric-icon amberish">f</span><div><small>Functions inspected</small><b>327</b><p>31 high complexity</p></div></article>
+          <article class="analysis-metric analysis-drill-card" data-analysis-jump="governance" data-analysis-filter="high"><span class="metric-icon blueish">EV</span><div><small>Data entities</small><b>64</b><p>12 policy gaps</p></div></article>
         </div>
         <div class="analysis-layout">
           <article class="panel analysis-main">
             <div class="analysis-tabs" id="analysis-tabs"><button class="active" data-analysis="dead-code">Dead components <span>12</span></button><button data-analysis="modules">Technical modules <span>4</span></button><button data-analysis="functions">Functions & procedures <span>4</span></button><button data-analysis="data-models">Data models <span>4</span></button><button data-analysis="naming">Naming conventions <span>4</span></button><button data-analysis="governance">Data governance <span>4</span></button></div>
-            <div class="analysis-toolbar"><div><h2 id="analysis-title">Technical module assessment</h2><p id="analysis-description">Architecture boundaries, coupling, cohesion, ownership, and operational resilience.</p></div><div class="analysis-filter"><button class="ghost active">All</button><button class="ghost">High risk</button><button class="ghost">Quick wins</button></div></div>
+            <div class="analysis-toolbar"><div><h2 id="analysis-title">Technical module assessment</h2><p id="analysis-description">Architecture boundaries, coupling, cohesion, ownership, and operational resilience.</p></div><div class="analysis-filter" id="analysis-filter"><button class="ghost active" data-analysis-filter="all">All</button><button class="ghost" data-analysis-filter="high">High risk</button><button class="ghost" data-analysis-filter="quick">Quick wins</button></div></div>
             <div id="analysis-findings"></div>
           </article>
           <aside class="analysis-side">
             <article class="panel health-panel"><div class="panel-title"><div><h2>Quality profile</h2><p>Across all analyzed components</p></div></div><div id="quality-bars"></div></article>
-            <article class="panel policy-map"><div class="panel-title"><div><h2>Policy traceability</h2><p>Data entities linked to obligations</p></div></div><div class="trace-stat"><b>81%</b><span>52 of 64 entities mapped</span></div><div class="progress"><i style="width:81%"></i></div><div class="policy-pills"><span>GDPR <b>24</b></span><span>HIPAA <b>17</b></span><span>SOC 2 <b>31</b></span><span>EU AI <b>14</b></span></div><button class="ghost full" data-go="frameworks">Open policy map →</button></article>
-            <article class="panel quick-wins"><div class="panel-title"><div><h2>Recommended sequence</h2><p>Maximum risk reduction first</p></div></div><ol><li><span>1</span><div><b>Define canonical data contracts</b><small>High impact · 2 days</small></div></li><li><span>2</span><div><b>Split audit orchestration</b><small>High impact · 3 days</small></div></li><li><span>3</span><div><b>Enforce naming rules in CI</b><small>Medium impact · 4 hours</small></div></li></ol></article>
+            <article class="panel policy-map"><div class="panel-title"><div><h2>Policy traceability</h2><p>Data entities linked to obligations</p></div></div><div class="trace-stat"><b>81%</b><span>52 of 64 entities mapped</span></div><div class="progress"><i style="width:81%"></i></div><div class="policy-pills"><span>GDPR <b>24</b></span><span>HIPAA <b>17</b></span><span>SOC 2 <b>31</b></span><span>EU AI <b>14</b></span></div><button class="ghost full" data-go="frameworks">Open policy map -></button></article>
+            <article class="panel quick-wins"><div class="panel-title"><div><h2>Recommended sequence</h2><p>Maximum risk reduction first</p></div></div><ol><li><span>1</span><div><b>Define canonical data contracts</b><small>High impact  -  2 days</small></div></li><li><span>2</span><div><b>Split audit orchestration</b><small>High impact  -  3 days</small></div></li><li><span>3</span><div><b>Enforce naming rules in CI</b><small>Medium impact  -  4 hours</small></div></li></ol></article>
           </aside>
         </div>
       </section>
 
       <section class="view" id="architecture">
-        <div class="page-head"><div><p class="eyebrow">SYSTEM BLUEPRINT</p><h1>Project architecture & AI economics</h1><p class="subtitle">Current implementation, target component boundaries, and estimated AI consumption per audit.</p></div><div class="estimate-note"><span>ESTIMATE</span> Planning model · not measured production usage</div></div>
+        <div class="page-head"><div><p class="eyebrow">SYSTEM BLUEPRINT</p><h1>Project architecture & AI economics</h1><p class="subtitle">Current implementation, target component boundaries, and estimated AI consumption per audit.</p></div><div class="estimate-note"><span>ESTIMATE</span> Planning model  -  not measured production usage</div></div>
 
         <article class="panel architecture-hero">
           <div class="arch-heading"><div><h2>Current analyzed architecture</h2><p>Solid lines exist today. Dashed layers are the recommended production path.</p></div><div class="arch-legend"><span><i class="live-line"></i>Current</span><span><i class="planned-line"></i>Planned</span><span><i class="risk-dot"></i>Risk boundary</span></div></div>
           <div class="system-map" role="img" aria-label="Aegis architecture from source inputs through browser prototype to planned API, orchestration, worker, evidence, evaluation, and report layers">
-            <div class="arch-column source-column"><small>INPUTS</small><div class="arch-node current"><i>▣</i><b>Project folder</b><span>File names only</span></div><div class="arch-node simulated"><i>⌘</i><b>Git repository</b><span>UI simulation</span></div><div class="arch-node simulated"><i>⌁</i><b>Data sources</b><span>UI simulation</span></div></div>
-            <div class="flow-arrow"><span>→</span><small>browser events</small></div>
-            <div class="arch-column current-column"><small>CURRENT RUNTIME</small><div class="arch-node current primary-node"><i>◫</i><b>Vite static client</b><span>HTML · CSS · JavaScript</span></div><div class="arch-node current"><i>◇</i><b>Mock data catalog</b><span>Frameworks · scores · findings</span></div><div class="arch-node current"><i>≡</i><b>Static report renderer</b><span>DOM · browser print</span></div></div>
-            <div class="flow-arrow planned"><span>⇢</span><small>recommended API</small></div>
-            <div class="arch-column platform-column"><small>PLANNED CONTROL PLANE</small><div class="arch-node planned-node"><i>⌬</i><b>Audit API</b><span>Auth · tenancy · lifecycle</span></div><div class="arch-node planned-node"><i>✦</i><b>Orchestrator</b><span>DAG · budgets · retries</span></div><div class="arch-node planned-node"><i>▤</i><b>PostgreSQL + objects</b><span>Metadata · immutable evidence</span></div></div>
-            <div class="flow-arrow planned"><span>⇄</span><small>durable queue</small></div>
-            <div class="arch-column worker-column risk-boundary"><small>ISOLATED EXECUTION</small><div class="arch-node planned-node ai-node"><i>AI</i><b>Analysis workers</b><span>Code · data · model · policy</span></div><div class="worker-strip"><span>Discover</span><span>Scan</span><span>Evaluate</span><span>Verify</span></div><div class="arch-node planned-node"><i>✓</i><b>Report snapshot</b><span>Signed · reproducible</span></div></div>
+            <div class="arch-column source-column"><small>INPUTS</small><div class="arch-node current"><i>PF</i><b>Project folder</b><span>File names only</span></div><div class="arch-node simulated"><i>GH</i><b>Git repository</b><span>UI simulation</span></div><div class="arch-node simulated"><i>DS</i><b>Data sources</b><span>UI simulation</span></div></div>
+            <div class="flow-arrow"><span>-></span><small>browser events</small></div>
+            <div class="arch-column current-column"><small>CURRENT RUNTIME</small><div class="arch-node current primary-node"><i>UI</i><b>Vite static client</b><span>HTML  -  CSS  -  JavaScript</span></div><div class="arch-node current"><i>MD</i><b>Mock data catalog</b><span>Frameworks  -  scores  -  findings</span></div><div class="arch-node current"><i>RP</i><b>Static report renderer</b><span>DOM  -  browser print</span></div></div>
+            <div class="flow-arrow planned"><span>-></span><small>recommended API</small></div>
+            <div class="arch-column platform-column"><small>PLANNED CONTROL PLANE</small><div class="arch-node planned-node"><i>AP</i><b>Audit API</b><span>Auth  -  tenancy  -  lifecycle</span></div><div class="arch-node planned-node"><i>OR</i><b>Orchestrator</b><span>DAG  -  budgets  -  retries</span></div><div class="arch-node planned-node"><i>DB</i><b>PostgreSQL + objects</b><span>Metadata  -  immutable evidence</span></div></div>
+            <div class="flow-arrow planned"><span>&lt;-&gt;</span><small>durable queue</small></div>
+            <div class="arch-column worker-column risk-boundary"><small>ISOLATED EXECUTION</small><div class="arch-node planned-node ai-node"><i>AI</i><b>Analysis workers</b><span>Code  -  data  -  model  -  policy</span></div><div class="worker-strip"><span>Discover</span><span>Scan</span><span>Evaluate</span><span>Verify</span></div><div class="arch-node planned-node"><i>RS</i><b>Report snapshot</b><span>Signed  -  reproducible</span></div></div>
           </div>
           <div class="architecture-callout"><b>Current constraint</b><span>No source content reaches an analyzer, database, or AI model. The interface is a product specification with fixed results.</span><b>Migration seam</b><span>Replace mock arrays with API DTOs while preserving the current views.</span></div>
         </article>
 
-        <div class="ai-controls"><div><p class="eyebrow">PROJECTED AI WORKLOAD</p><h2>Token usage by component</h2></div><label>Repository profile <select id="repo-profile"><option value="0.35">Small · 25K LOC</option><option value="1" selected>Medium · 150K LOC</option><option value="3.2">Large · 750K LOC</option></select></label></div>
+        <div class="ai-controls"><div><p class="eyebrow">PROJECTED AI WORKLOAD</p><h2>Token usage by component</h2></div><label>Repository profile <select id="repo-profile"><option value="0.35">Small  -  25K LOC</option><option value="1" selected>Medium  -  150K LOC</option><option value="3.2">Large  -  750K LOC</option></select></label></div>
         <div class="token-summary"><article><small>Input tokens / audit</small><b id="total-input">1.54M</b><span>after deterministic preprocessing</span></article><article><small>Output tokens / audit</small><b id="total-output">186K</b><span>structured results + narrative</span></article><article><small>Estimated model calls</small><b id="total-calls">146</b><span>parallel and cache-aware</span></article><article><small>Cacheable input</small><b>64%</b><span>policies, schemas, unchanged code</span></article></div>
         <div class="architecture-grid">
-          <article class="panel token-panel"><div class="panel-title"><div><h2>Component token budget</h2><p>Projected medium repository · per complete audit</p></div><span class="unit-pill">TOKENS</span></div><div id="token-chart"></div><div class="token-axis"><span>0</span><span>100K</span><span>200K</span><span>300K</span><span>400K+</span></div></article>
-          <article class="panel metadata-panel"><div class="panel-title"><div><h2>AI runtime metadata</h2><p>Required provenance for every model-assisted decision</p></div></div><div class="meta-grid"><div><small>Routing strategy</small><b>Risk-tiered cascade</b></div><div><small>Context strategy</small><b>Chunk + retrieve</b></div><div><small>Temperature</small><b>0.0–0.2</b></div><div><small>Structured output</small><b>JSON Schema</b></div><div><small>Max retries</small><b>2 per task</b></div><div><small>Human review</small><b>Low confidence</b></div><div><small>Evidence retention</small><b>Hash + pointer</b></div><div><small>Prompt versioning</small><b>Mandatory</b></div></div><div class="metadata-required"><b>Persist with every decision</b><p>provider · model ID · model revision · prompt ID/version · token counts · latency · cache status · evidence IDs · confidence · policy version · agent version · verifier disagreement</p></div></article>
+          <article class="panel token-panel"><div class="panel-title"><div><h2>Component token budget</h2><p>Projected medium repository  -  per complete audit</p></div><span class="unit-pill">TOKENS</span></div><div id="token-chart"></div><div class="token-axis"><span>0</span><span>100K</span><span>200K</span><span>300K</span><span>400K+</span></div></article>
+          <article class="panel metadata-panel"><div class="panel-title"><div><h2>AI runtime metadata</h2><p>Required provenance for every model-assisted decision</p></div></div><div class="meta-grid"><div><small>Routing strategy</small><b>Risk-tiered cascade</b></div><div><small>Context strategy</small><b>Chunk + retrieve</b></div><div><small>Temperature</small><b>0.0-0.2</b></div><div><small>Structured output</small><b>JSON Schema</b></div><div><small>Max retries</small><b>2 per task</b></div><div><small>Human review</small><b>Low confidence</b></div><div><small>Evidence retention</small><b>Hash + pointer</b></div><div><small>Prompt versioning</small><b>Mandatory</b></div></div><div class="metadata-required"><b>Persist with every decision</b><p>provider  -  model ID  -  model revision  -  prompt ID/version  -  token counts  -  latency  -  cache status  -  evidence IDs  -  confidence  -  policy version  -  agent version  -  verifier disagreement</p></div></article>
         </div>
+        <article class="panel report-tools-panel agent-diagrams-panel">
+          <div class="panel-title"><div><h2>Framework policy RAG architecture</h2><p>How baseline resources, framework details, and source/design evidence are stored and retrieved for chat answers</p></div><span class="version-pill">LOCAL RAG</span></div>
+          <div class="report-primary-grid">
+            <article class="panel report-summary-panel"><h3>1. Baseline resource store</h3><p>Versioned framework summaries, security manifests, policy baselines, findings, and deep-analysis gap records are normalized into local retrieval documents.</p><div id="rag-architecture-store"></div></article>
+            <article class="panel report-architecture-panel"><h3>2. Retrieval and answer flow</h3><p>User questions are tokenized, matched against the stored policy corpus, ranked by framework/policy/gap relevance, then answered with grounded citations and run context.</p><div id="rag-architecture-flow"></div></article>
+          </div>
+        </article>
+        <article class="panel report-tools-panel agent-diagrams-panel">
+          <div class="panel-title"><div><h2>Agent architecture diagrams</h2><p>Baseline-first orchestration diagrams for engineering and stakeholder communication</p></div><div><button class="ghost" id="diagram-size-toggle" type="button" aria-pressed="true">Diagram size: Boardroom</button> <span class="version-pill">UML + ICON VIEW</span></div></div>
+          <div class="report-primary-grid agent-diagrams-grid">
+            <article class="panel report-summary-panel">
+              <h3>1. UML sequence (simplified)</h3>
+              <div id="architecture-sequence-mermaid" class="mermaid" data-render-live="true">
+sequenceDiagram
+  actor User
+  participant UI
+  participant BaselineAgent
+  participant RAGService
+  participant Orchestrator
+  participant AnalysisAgents
+  participant Evaluator
+  participant Verifier
+  participant Reporter
+
+  Note over BaselineAgent,RAGService: Baseline Gate
+  User->>UI: Start Audit
+  UI->>BaselineAgent: runFirst()
+  BaselineAgent->>RAGService: rebuild() + status()
+  BaselineAgent-->>UI: gate Pass/Block + manifest
+
+  Note over Orchestrator,AnalysisAgents: Orchestration + Analysis
+  UI->>Orchestrator: continue when gate Pass
+  Orchestrator->>AnalysisAgents: discovery/collection/mapping
+  AnalysisAgents->>Evaluator: control outcomes + confidence
+
+  Note over Evaluator,Reporter: Assurance + Reporting
+  Evaluator->>Verifier: critical + low-confidence subset
+  Verifier->>Reporter: verified findings
+  Reporter-->>UI: report snapshot + evidence links
+              </div>
+            </article>
+            <article class="panel report-architecture-panel">
+              <h3>2. Icon hierarchy (simple)</h3>
+              <div id="architecture-icon-hierarchy-mermaid" class="mermaid live-icon-hierarchy pipeline-stage-idle" data-render-live="true"></div>
+            </article>
+          </div>
+        </article>
         <article class="panel ai-components-panel"><div class="panel-title"><div><h2>AI component inventory</h2><p>Estimated implementation effort and runtime characteristics</p></div><button class="ghost">Export metadata</button></div><div class="ai-component-grid" id="ai-component-grid"></div></article>
-        <article class="panel scale-projection"><div class="panel-title"><div><h2>Scaling projection</h2><p>Where token, latency, and reliability pressure moves as adoption grows</p></div></div><div class="scale-flow"><div><small>PILOT</small><b>1–10 audits/day</b><span>Direct model API<br>simple cache</span></div><i>→</i><div class="sweet"><small>SWEET SPOT</small><b>10–100/day</b><span>Batching · routing<br>shared evidence cache</span></div><i>→</i><div><small>SCALE-OUT</small><b>100–1K/day</b><span>Model gateway<br>tenant budgets</span></div><i>→</i><div class="danger-zone"><small>BREAK RISK</small><b>1K+/day</b><span>Rate limits · queue age<br>version drift</span></div></div></article>
+        <article class="panel scale-projection"><div class="panel-title"><div><h2>Scaling projection</h2><p>Where token, latency, and reliability pressure moves as adoption grows</p></div></div><div class="scale-flow"><div><small>PILOT</small><b>1-10 audits/day</b><span>Direct model API<br>simple cache</span></div><i>-></i><div class="sweet"><small>SWEET SPOT</small><b>10-100/day</b><span>Batching  -  routing<br>shared evidence cache</span></div><i>-></i><div><small>SCALE-OUT</small><b>100-1K/day</b><span>Model gateway<br>tenant budgets</span></div><i>-></i><div class="danger-zone"><small>BREAK RISK</small><b>1K+/day</b><span>Rate limits  -  queue age<br>version drift</span></div></div></article>
       </section>
 
       <section class="view" id="security">
-        <div class="page-head"><div><p class="eyebrow">CONTINUOUS BASELINE ASSURANCE</p><h1>Security baseline</h1><p class="subtitle">Validate authoritative policy versions before analysis and pin every audit to a reproducible signed manifest.</p></div><button class="primary small" id="refresh-baselines">↻ Check for updates</button></div>
-        <div class="security-gate"><div class="gate-status"><span id="gate-icon">✓</span><div><small>PRE-RUN SECURITY GATE</small><h2 id="gate-title">Baseline manifest verified</h2><p id="gate-detail">14 sources checked · no blocking integrity failures · valid for 24 hours</p></div></div><div class="gate-meta"><div><small>Last checked</small><b id="baseline-checked">Aug 8, 2026 · 10:24 CDT</b></div><div><small>Manifest</small><b>BL-2026.08.08-7f3a</b></div><div><small>Next required check</small><b>Before next run or in 24h</b></div></div></div>
-        <div class="security-stats"><article><small>Security controls</small><b>412</b><span>across 9 security sources</span></article><article><small>Current findings</small><b>37</b><span>5 critical · 11 high</span></article><article><small>Baseline changes</small><b>6</b><span>since previous manifest</span></article><article><small>Evidence freshness</small><b>89%</b><span>46 items expire in 30 days</span></article></div>
-        <div class="security-layout"><article class="panel security-findings"><div class="panel-title"><div><h2>Security analysis against current baselines</h2><p>Prioritized by exploitability, exposure, data impact, and policy reach</p></div><span class="verified">✓ Baseline pinned</span></div><div class="security-finding-list">
-          <div><span class="security-rank critical">C</span><div><b>Agent tool permissions exceed declared purpose</b><p>Write-capable tools are available to the analysis agent without per-task allowlists or confirmation boundaries.</p><small>OWASP LLM06 · MITRE ATLAS agent tool invocation · NIST AI 600-1</small></div><em>Critical</em></div>
-          <div><span class="security-rank critical">C</span><div><b>Repository analysis is not sandboxed</b><p>Future scanners could execute untrusted project content in the application environment.</p><small>NIST SP 800-218A · NIST CSF 2.0 PR.PS · SOC 2 CC6/CC7</small></div><em>Critical</em></div>
-          <div><span class="security-rank high">H</span><div><b>No signed provenance for models and prompts</b><p>Model, provider, prompt, policy, and evaluation versions cannot be reproduced from the current report.</p><small>ISO/IEC 42001 · EU AI Act · NIST AI RMF</small></div><em>High</em></div>
-          <div><span class="security-rank high">H</span><div><b>Evidence integrity is not persisted</b><p>Browser constants can change without an immutable digest, access log, or chain of custody.</p><small>NIST CSF 2.0 PR.DS · HIPAA §164.312(c) · ISO 27001 A.8</small></div><em>High</em></div>
-          <div><span class="security-rank medium">M</span><div><b>Third-party font dependency weakens privacy boundary</b><p>Google Fonts creates an external request and availability dependency; self-host for strict regulated deployments.</p><small>GDPR data minimization · supply-chain controls · CSP hardening</small></div><em>Medium</em></div>
-        </div></article><aside class="security-side"><article class="panel baseline-process"><h2>Mandatory pre-run sequence</h2><ol><li><span>1</span><div><b>Fetch metadata</b><small>Official source only · HTTPS</small></div></li><li><span>2</span><div><b>Verify signature/digest</b><small>Reject altered artifacts</small></div></li><li><span>3</span><div><b>Classify status</b><small>Active · proposed · retired</small></div></li><li><span>4</span><div><b>Diff controls</b><small>Preserve semantic IDs</small></div></li><li><span>5</span><div><b>Human approval</b><small>Material baseline changes</small></div></li><li><span>6</span><div><b>Pin manifest</b><small>Immutable for audit lifetime</small></div></li></ol></article><article class="panel update-policy"><h2>Update policy</h2><div><span>Required refresh</span><b>Before every run</b></div><div><span>Maximum cache age</span><b>24 hours</b></div><div><span>Source failure</span><b>Use last trusted + warn</b></div><div><span>Integrity failure</span><b>Block audit</b></div><div><span>Proposed rule</span><b>Advisory only</b></div><div><span>Issued report</span><b>Never rewritten</b></div></article></aside></div>
+        <div class="page-head"><div><p class="eyebrow">CONTINUOUS BASELINE ASSURANCE</p><h1>Security baseline</h1><p class="subtitle">Validate authoritative policy versions before analysis and pin every audit to a reproducible signed manifest.</p></div><button class="primary small" id="refresh-baselines">refresh Check for updates</button></div>
+        <div class="security-gate"><div class="gate-status"><span id="gate-icon">Ready</span><div><small>PRE-RUN SECURITY GATE</small><h2 id="gate-title">Baseline manifest verified</h2><p id="gate-detail">14 sources checked  -  no blocking integrity failures  -  valid for 24 hours</p></div></div><div class="gate-meta"><div><small>Last checked</small><b id="baseline-checked">Aug 8, 2026  -  10:24 CDT</b></div><div><small>Manifest</small><b>BL-2026.08.08-7f3a</b></div><div><small>Next required check</small><b>Before next run or in 24h</b></div></div></div>
+        <div class="security-stats"><article><small>Security controls</small><b>412</b><span>across 9 security sources</span></article><article><small>Current findings</small><b>37</b><span>5 critical  -  11 high</span></article><article><small>Baseline changes</small><b>6</b><span>since previous manifest</span></article><article><small>Evidence freshness</small><b>89%</b><span>46 items expire in 30 days</span></article></div>
+        <div class="security-layout"><article class="panel security-findings"><div class="panel-title"><div><h2>Security analysis against current baselines</h2><p>Prioritized by exploitability, exposure, data impact, and policy reach</p></div><span class="verified">Baseline pinned</span></div><div class="security-finding-list">
+          <div><span class="security-rank critical">C</span><div><b>Agent tool permissions exceed declared purpose</b><p>Write-capable tools are available to the analysis agent without per-task allowlists or confirmation boundaries.</p><small>OWASP LLM06  -  MITRE ATLAS agent tool invocation  -  NIST AI 600-1</small></div><em>Critical</em></div>
+          <div><span class="security-rank critical">C</span><div><b>Repository analysis is not sandboxed</b><p>Future scanners could execute untrusted project content in the application environment.</p><small>NIST SP 800-218A  -  NIST CSF 2.0 PR.PS  -  SOC 2 CC6/CC7</small></div><em>Critical</em></div>
+          <div><span class="security-rank high">H</span><div><b>No signed provenance for models and prompts</b><p>Model, provider, prompt, policy, and evaluation versions cannot be reproduced from the current report.</p><small>ISO/IEC 42001  -  EU AI Act  -  NIST AI RMF</small></div><em>High</em></div>
+          <div><span class="security-rank high">H</span><div><b>Evidence integrity is not persisted</b><p>Browser constants can change without an immutable digest, access log, or chain of custody.</p><small>NIST CSF 2.0 PR.DS  -  HIPAA C164.312(c)  -  ISO 27001 A.8</small></div><em>High</em></div>
+          <div><span class="security-rank medium">M</span><div><b>Third-party font dependency weakens privacy boundary</b><p>Google Fonts creates an external request and availability dependency; self-host for strict regulated deployments.</p><small>GDPR data minimization  -  supply-chain controls  -  CSP hardening</small></div><em>Medium</em></div>
+        </div></article><aside class="security-side"><article class="panel baseline-process"><h2>Mandatory pre-run sequence</h2><ol><li><span>1</span><div><b>Fetch metadata</b><small>Official source only  -  HTTPS</small></div></li><li><span>2</span><div><b>Verify signature/digest</b><small>Reject altered artifacts</small></div></li><li><span>3</span><div><b>Classify status</b><small>Active  -  proposed  -  retired</small></div></li><li><span>4</span><div><b>Diff controls</b><small>Preserve semantic IDs</small></div></li><li><span>5</span><div><b>Human approval</b><small>Material baseline changes</small></div></li><li><span>6</span><div><b>Pin manifest</b><small>Immutable for audit lifetime</small></div></li></ol></article><article class="panel update-policy"><h2>Update policy</h2><div><span>Required refresh</span><b>Before every run</b></div><div><span>Maximum cache age</span><b>24 hours</b></div><div><span>Source failure</span><b>Use last trusted + warn</b></div><div><span>Integrity failure</span><b>Block audit</b></div><div><span>Proposed rule</span><b>Advisory only</b></div><div><span>Issued report</span><b>Never rewritten</b></div></article></aside></div>
         <article class="panel baseline-manifest"><div class="panel-title"><div><h2>Versioned source manifest</h2><p>Every row is retained with the audit report</p></div><button class="ghost">Export manifest</button></div><div class="manifest-table-wrap"><table><thead><tr><th>BASELINE</th><th>VERSION / DATE</th><th>AUTHORITY</th><th>STATUS</th><th>SECURITY FOCUS</th><th>LAST CHECK</th></tr></thead><tbody id="security-manifest"></tbody></table></div></article>
       </section>
 
       <section class="view" id="nuclear">
-        <div class="page-head"><div><p class="eyebrow">NUCLEAR ENGINEERING ASSURANCE</p><h1>Nuclear design baseline</h1><p class="subtitle">Evidence-led design review across nuclear safety, quality assurance, licensing, digital I&C, cybersecurity, and configuration control.</p></div><div><button class="ghost" id="nuclear-scope">U.S. NRC + IAEA ⌄</button> <button class="primary small" id="run-nuclear-review">Run nuclear design review</button></div></div>
+        <div class="page-head"><div><p class="eyebrow">NUCLEAR ENGINEERING ASSURANCE</p><h1>Nuclear design baseline</h1><p class="subtitle">Evidence-led design review across nuclear safety, quality assurance, licensing, digital I&C, cybersecurity, and configuration control.</p></div><div><button class="ghost" id="nuclear-scope">U.S. NRC + IAEA v</button> <button class="primary small" id="run-nuclear-review">Run nuclear design review</button></div></div>
         <div class="nuclear-warning"><span>!</span><div><b>Decision-support boundary</b><p>This module identifies evidence gaps and maps design artifacts to regulatory baselines. It does not certify a reactor design, determine licensing acceptability, perform safety analysis, or replace the NRC, an authorized nuclear inspector, an accredited QA program, or qualified nuclear engineering review.</p></div></div>
-        <div class="nuclear-summary"><article><small>Nuclear baselines</small><b>9</b><span>4 binding · 3 guidance · 2 international</span></article><article><small>Design criteria mapped</small><b>286</b><span>to 173 canonical controls</span></article><article><small>Evidence coverage</small><b>74%</b><span>63 design artifacts missing</span></article><article><small>Safety-significant gaps</small><b>11</b><span>3 require immediate review</span></article><article><small>Baseline checked</small><b>Today</b><span>official sources pinned</span></article></div>
-        <div class="nuclear-layout"><article class="panel nuclear-assessment"><div class="panel-title"><div><h2>Nuclear engineering design analysis</h2><p>Defense-in-depth and lifecycle evidence by engineering domain</p></div><span class="verified">✓ Manifest pinned</span></div><div class="nuclear-domain-grid">
+        <div class="nuclear-summary"><article><small>Nuclear baselines</small><b>9</b><span>4 binding  -  3 guidance  -  2 international</span></article><article><small>Design criteria mapped</small><b>286</b><span>to 173 canonical controls</span></article><article><small>Evidence coverage</small><b>74%</b><span>63 design artifacts missing</span></article><article><small>Safety-significant gaps</small><b>11</b><span>3 require immediate review</span></article><article><small>Baseline checked</small><b>Today</b><span>official sources pinned</span></article></div>
+        <div class="nuclear-layout"><article class="panel nuclear-assessment"><div class="panel-title"><div><h2>Nuclear engineering design analysis</h2><p>Defense-in-depth and lifecycle evidence by engineering domain</p></div><span class="verified">Manifest pinned</span></div><div class="nuclear-domain-grid">
           <div><span>01</span><b>Licensing basis & requirements</b><p>Design bases, applicable regulations, commitments, exemptions, license conditions, ITAAC, traceability.</p><em>68% evidence</em></div><div><span>02</span><b>Safety classification</b><p>Structures, systems and components; safety functions; quality groups; seismic and environmental qualification.</p><em>71% evidence</em></div><div><span>03</span><b>Defense-in-depth</b><p>Prevention, protection, mitigation, independence, diversity, redundancy, common-cause failure.</p><em>82% evidence</em></div><div><span>04</span><b>Deterministic safety analysis</b><p>Postulated initiating events, acceptance criteria, conservative assumptions, uncertainty, verification.</p><em>63% evidence</em></div><div><span>05</span><b>Probabilistic risk insights</b><p>Risk-significant functions, failure modes, dependencies, human actions, external hazards.</p><em>59% evidence</em></div><div><span>06</span><b>Digital I&C and software</b><p>Safety system architecture, independence, secure development, V&V, tool qualification, change control.</p><em>66% evidence</em></div><div><span>07</span><b>Nuclear cybersecurity</b><p>SSEP functions, critical digital assets, defensive architecture, baseline controls, lifecycle program.</p><em>77% evidence</em></div><div><span>08</span><b>Quality assurance</b><p>Design control, procurement, instructions, document control, inspection, testing, corrective action, records, audits.</p><em>88% evidence</em></div><div><span>09</span><b>Configuration management</b><p>Requirements, design documents, physical configuration, change evaluation, interfaces, reconciliation.</p><em>73% evidence</em></div><div><span>10</span><b>Human factors & operations</b><p>Staffing, control-room design, procedures, alarm response, training, maintainability, human reliability.</p><em>69% evidence</em></div><div><span>11</span><b>Hazards & siting</b><p>Seismic, flooding, fire, aircraft impact, weather, external events, beyond-design-basis mitigation.</p><em>61% evidence</em></div><div><span>12</span><b>Supply chain & Part 21</b><p>Basic components, commercial-grade dedication, counterfeit items, deviations, reportable defects.</p><em>79% evidence</em></div>
         </div></article><aside class="nuclear-side"><article class="panel nuclear-classification"><h2>Evidence classification</h2><div><span>Safety-related</span><b>146 artifacts</b></div><div><span>Safety-significant</span><b>73 artifacts</b></div><div><span>Quality affecting</span><b>218 artifacts</b></div><div><span>Critical digital asset</span><b>42 assets</b></div><div><span>Unclassified / unknown</span><b class="warn-text">63 items</b></div><p>Classification is inferred for triage and must be confirmed by the responsible engineering and licensing organizations.</p></article><article class="panel nuclear-ai-boundary"><h2>AI use restrictions</h2><ul><li>AI may classify, retrieve, cross-reference, and draft findings.</li><li>AI cannot approve safety classifications or design changes.</li><li>Calculations require qualified methods, software, inputs, and independent verification.</li><li>Every AI assertion must cite controlled evidence.</li><li>Unknown or conflicting evidence routes to human review.</li><li>Prompts, models, tokens, and outputs become QA records only when governed by the approved process.</li></ul></article></aside></div>
-        <article class="panel nuclear-findings"><div class="panel-title"><div><h2>Priority nuclear-design findings</h2><p>Mock analysis demonstrating the expected output structure</p></div><span class="tag neutral">11 OPEN</span></div><div class="nuclear-finding-list"><div><span class="nuc-sev critical">C</span><div><b>Safety classification is not traceable to credited safety functions</b><p>Seven digital I&C components are marked safety-related without bidirectional links to system requirements, accident analyses, or classification decisions.</p><small>10 CFR Part 50 App. A/B · IAEA SSR-2/1 · Design control</small></div><em>Licensing + I&C</em></div><div><span class="nuc-sev critical">C</span><div><b>Common-cause failure assessment omits shared AI monitoring infrastructure</b><p>The proposed monitoring service shares compute, identity, and update paths across redundant trains without a documented independence assessment.</p><small>Defense-in-depth · independence · digital system cybersecurity</small></div><em>Safety analysis</em></div><div><span class="nuc-sev high">H</span><div><b>Commercial-grade software dedication evidence is incomplete</b><p>Supplier evaluation, critical characteristics, acceptance methods, and Part 21 reporting interfaces are not defined.</p><small>10 CFR Part 21 · 10 CFR Part 50 App. B · RG 1.28 Rev. 6</small></div><em>Quality assurance</em></div><div><span class="nuc-sev high">H</span><div><b>Critical digital asset boundary differs across diagrams</b><p>Network, cybersecurity, and system-design diagrams identify inconsistent communication paths for two SSEP-supporting services.</p><small>10 CFR 73.54 · RG 5.71 Rev. 1</small></div><em>Cybersecurity</em></div></div></article>
-        <article class="panel nuclear-baselines"><div class="panel-title"><div><h2>Nuclear baseline registry</h2><p>Authority, legal status, design scope, and official source</p></div><span class="live-baseline">● Official sources monitored</span></div><div class="nuclear-baseline-grid">
-          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part050/full-text" target="_blank" rel="noreferrer"><div><span>10 CFR 50</span><em>BINDING</em></div><h3>Part 50 + Appendices A and B</h3><p>Domestic licensing, General Design Criteria, and quality-assurance criteria for nuclear power plants and fuel reprocessing plants.</p><b>NRC regulation ↗</b></a>
-          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part052/" target="_blank" rel="noreferrer"><div><span>10 CFR 52</span><em>BINDING</em></div><h3>Licenses, certifications, approvals</h3><p>Early site permits, standard design certifications, combined licenses, ITAAC, and acceptance criteria.</p><b>NRC regulation ↗</b></a>
-          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part021/index" target="_blank" rel="noreferrer"><div><span>10 CFR 21</span><em>BINDING</em></div><h3>Defects and noncompliance</h3><p>Evaluation, notification, procurement-document, inspection, and record obligations for basic components.</p><b>NRC regulation ↗</b></a>
-          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part073/part073-0054.html" target="_blank" rel="noreferrer"><div><span>§73.54</span><em>BINDING</em></div><h3>Digital systems protection</h3><p>Cyber protection of digital computers, communication systems, and networks associated with SSEP functions.</p><b>NRC regulation ↗</b></a>
-          <a href="https://www.nrc.gov/docs/ML2225/ML22258A204.pdf" target="_blank" rel="noreferrer"><div><span>RG 5.71</span><em>GUIDANCE</em></div><h3>Cyber Security Programs Rev. 1</h3><p>NRC-accepted method for implementing and maintaining nuclear-reactor cybersecurity programs.</p><b>NRC guidance ↗</b></a>
-          <a href="https://www.nrc.gov/reactors/new-reactors/how-we-regulate/oversight/quality-assurance/qual-assure-safety" target="_blank" rel="noreferrer"><div><span>RG 1.28</span><em>GUIDANCE</em></div><h3>QA Program Criteria Rev. 6</h3><p>Endorsement of NQA-1-2017, 2019, and 2022 with NRC exceptions and clarifications.</p><b>NRC guidance ↗</b></a>
-          <a href="https://www.nrc.gov/reactors/new-reactors/advanced/new-app/general-guidance/safety-review" target="_blank" rel="noreferrer"><div><span>NUREG-0800</span><em>REVIEW PLAN</em></div><h3>Standard Review Plan</h3><p>NRC staff review guidance for safety analysis, systems, technical specifications, QA, and licensing content.</p><b>NRC review guidance ↗</b></a>
-          <a href="https://nucleus-apps.iaea.org/nss-oui/Content/Index?SearchText=ssr-2%2F1+introduction&collectionid=m_daad92bb-3bb0-4445-a6ec-a287e55e9664&type=PublishedCollection" target="_blank" rel="noreferrer"><div><span>SSR-2/1</span><em>IAEA</em></div><h3>NPP Design, Revision 1</h3><p>IAEA safety requirements for fundamental safety functions, design concepts, plant states, hazards, and design provisions.</p><b>IAEA requirement ↗</b></a>
-          <a href="https://nucleus-apps.iaea.org/nss-oui/Content/Index?collectionid=m_f816f75b-4a2f-47a0-8578-91ceb427bc8b&type=PublishedCollection" target="_blank" rel="noreferrer"><div><span>GSR Part 2</span><em>IAEA</em></div><h3>Leadership and Management for Safety</h3><p>Responsibilities, graded management systems, supply chain, safety culture, assessment, and improvement.</p><b>IAEA requirement ↗</b></a>
+        <article class="panel nuclear-findings"><div class="panel-title"><div><h2>Priority nuclear-design findings</h2><p>Mock analysis demonstrating the expected output structure</p></div><span class="tag neutral">11 OPEN</span></div><div class="nuclear-finding-list"><div><span class="nuc-sev critical">C</span><div><b>Safety classification is not traceable to credited safety functions</b><p>Seven digital I&C components are marked safety-related without bidirectional links to system requirements, accident analyses, or classification decisions.</p><small>10 CFR Part 50 App. A/B  -  IAEA SSR-2/1  -  Design control</small></div><em>Licensing + I&C</em></div><div><span class="nuc-sev critical">C</span><div><b>Common-cause failure assessment omits shared AI monitoring infrastructure</b><p>The proposed monitoring service shares compute, identity, and update paths across redundant trains without a documented independence assessment.</p><small>Defense-in-depth  -  independence  -  digital system cybersecurity</small></div><em>Safety analysis</em></div><div><span class="nuc-sev high">H</span><div><b>Commercial-grade software dedication evidence is incomplete</b><p>Supplier evaluation, critical characteristics, acceptance methods, and Part 21 reporting interfaces are not defined.</p><small>10 CFR Part 21  -  10 CFR Part 50 App. B  -  RG 1.28 Rev. 6</small></div><em>Quality assurance</em></div><div><span class="nuc-sev high">H</span><div><b>Critical digital asset boundary differs across diagrams</b><p>Network, cybersecurity, and system-design diagrams identify inconsistent communication paths for two SSEP-supporting services.</p><small>10 CFR 73.54  -  RG 5.71 Rev. 1</small></div><em>Cybersecurity</em></div></div></article>
+        <article class="panel nuclear-baselines"><div class="panel-title"><div><h2>Nuclear baseline registry</h2><p>Authority, legal status, design scope, and official source</p></div><span class="live-baseline">* Official sources monitored</span></div><div class="nuclear-baseline-grid">
+          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part050/full-text" target="_blank" rel="noreferrer"><div><span>10 CFR 50</span><em>BINDING</em></div><h3>Part 50 + Appendices A and B</h3><p>Domestic licensing, General Design Criteria, and quality-assurance criteria for nuclear power plants and fuel reprocessing plants.</p><b>NRC regulation up</b></a>
+          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part052/" target="_blank" rel="noreferrer"><div><span>10 CFR 52</span><em>BINDING</em></div><h3>Licenses, certifications, approvals</h3><p>Early site permits, standard design certifications, combined licenses, ITAAC, and acceptance criteria.</p><b>NRC regulation up</b></a>
+          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part021/index" target="_blank" rel="noreferrer"><div><span>10 CFR 21</span><em>BINDING</em></div><h3>Defects and noncompliance</h3><p>Evaluation, notification, procurement-document, inspection, and record obligations for basic components.</p><b>NRC regulation up</b></a>
+          <a href="https://www.nrc.gov/reading-rm/doc-collections/cfr/part073/part073-0054.html" target="_blank" rel="noreferrer"><div><span>C73.54</span><em>BINDING</em></div><h3>Digital systems protection</h3><p>Cyber protection of digital computers, communication systems, and networks associated with SSEP functions.</p><b>NRC regulation up</b></a>
+          <a href="https://www.nrc.gov/docs/ML2225/ML22258A204.pdf" target="_blank" rel="noreferrer"><div><span>RG 5.71</span><em>GUIDANCE</em></div><h3>Cyber Security Programs Rev. 1</h3><p>NRC-accepted method for implementing and maintaining nuclear-reactor cybersecurity programs.</p><b>NRC guidance up</b></a>
+          <a href="https://www.nrc.gov/reactors/new-reactors/how-we-regulate/oversight/quality-assurance/qual-assure-safety" target="_blank" rel="noreferrer"><div><span>RG 1.28</span><em>GUIDANCE</em></div><h3>QA Program Criteria Rev. 6</h3><p>Endorsement of NQA-1-2017, 2019, and 2022 with NRC exceptions and clarifications.</p><b>NRC guidance up</b></a>
+          <a href="https://www.nrc.gov/reactors/new-reactors/advanced/new-app/general-guidance/safety-review" target="_blank" rel="noreferrer"><div><span>NUREG-0800</span><em>REVIEW PLAN</em></div><h3>Standard Review Plan</h3><p>NRC staff review guidance for safety analysis, systems, technical specifications, QA, and licensing content.</p><b>NRC review guidance up</b></a>
+          <a href="https://nucleus-apps.iaea.org/nss-oui/Content/Index?SearchText=ssr-2%2F1+introduction&collectionid=m_daad92bb-3bb0-4445-a6ec-a287e55e9664&type=PublishedCollection" target="_blank" rel="noreferrer"><div><span>SSR-2/1</span><em>IAEA</em></div><h3>NPP Design, Revision 1</h3><p>IAEA safety requirements for fundamental safety functions, design concepts, plant states, hazards, and design provisions.</p><b>IAEA requirement up</b></a>
+          <a href="https://nucleus-apps.iaea.org/nss-oui/Content/Index?collectionid=m_f816f75b-4a2f-47a0-8578-91ceb427bc8b&type=PublishedCollection" target="_blank" rel="noreferrer"><div><span>GSR Part 2</span><em>IAEA</em></div><h3>Leadership and Management for Safety</h3><p>Responsibilities, graded management systems, supply chain, safety culture, assessment, and improvement.</p><b>IAEA requirement up</b></a>
         </div></article>
       </section>
 
-      <section class="view" id="frameworks"><div class="page-head"><div><p class="eyebrow">CONTROL LIBRARY</p><h1>Compliance frameworks</h1><p class="subtitle">Cross-mapped obligations for privacy, security, AI governance, and regulated data.</p></div><button class="primary small">＋ Add custom framework</button></div><div class="framework-cards" id="framework-cards"></div></section>
+      <section class="view" id="frameworks"><div class="page-head"><div><p class="eyebrow">CONTROL LIBRARY</p><h1>Compliance frameworks</h1><p class="subtitle">Cross-mapped obligations for privacy, security, AI governance, and regulated data.</p></div><button class="primary small">+ Add custom framework</button></div><div class="framework-cards" id="framework-cards"></div></section>
 
       <section class="view" id="reports">
-        <div class="page-head"><div><p class="eyebrow">AUDIT REPORT</p><h1>Claims Intelligence Platform</h1><p class="subtitle">Full-scope evaluation · Completed today at 09:42</p></div><div><button class="ghost" id="print-report">⇩ Export PDF</button> <button class="primary small">Share report</button></div></div>
-        <div class="report-banner"><div class="grade">B+</div><div><small>OVERALL VERDICT</small><h2>Conditionally ready</h2><p>Strong technical controls with material gaps in AI governance and data retention.</p></div><div class="report-score"><b>82%</b><span>readiness</span></div></div>
-        <div class="report-grid"><article class="panel"><div class="panel-title"><div><h2>Executive summary</h2><p>Independent evaluator consensus</p></div><span class="verified">✓ Verified</span></div><p class="report-copy">The system demonstrates mature access control, encryption, and observability. The audit identified three critical issues: missing model lineage, unbounded training-data retention, and incomplete human-oversight documentation. Resolve these before production expansion into healthcare workflows.</p><div class="verdicts"><span><b>1,024</b> Passed</span><span><b>148</b> Needs evidence</span><span><b>76</b> Failed</span></div></article><article class="panel"><h2>Detected architecture</h2><div class="arch-flow"><span>API<br><small>FastAPI</small></span><i>→</i><span>Stream<br><small>Kafka</small></span><i>→</i><span>Model<br><small>PyTorch</small></span><i>→</i><span>Store<br><small>Postgres</small></span></div><div class="tech-tags"><span>Kubernetes</span><span>MLflow</span><span>S3</span><span>OpenTelemetry</span></div></article></div>
-        <article class="panel findings"><div class="panel-title"><div><h2>Priority remediation plan</h2><p>Ordered by risk reduction and implementation effort</p></div><button class="ghost">All findings</button></div><div id="finding-list"></div></article>
-        <article class="panel tools"><div class="panel-title"><div><h2>Open-source toolkit</h2><p>License-free tools mapped to your remediation path</p></div></div><div id="tool-list"></div></article>
+        <div class="page-head"><div><p class="eyebrow">AUDIT REPORT</p><h1 id="report-project-title">Claims Intelligence Platform</h1><p class="subtitle" id="report-run-meta">Full-scope evaluation  -  Completed today at 09:42</p></div><div><button class="ghost" id="print-report"> Export PDF</button> <button class="primary small">Share report</button></div></div>
+        <div class="report-banner"><div class="grade" id="report-grade">B+</div><div><small>OVERALL VERDICT</small><h2 id="report-overall-verdict">Conditionally ready</h2><p id="report-overall-summary">Strong technical controls with material gaps in governance, provenance, and policy-bound data handling.</p></div><div class="report-score"><b id="report-readiness-score">82%</b><span>readiness</span></div></div>
+        <div class="report-primary-grid"><article class="panel report-summary-panel" id="report-summary-section"><div class="panel-title"><div><h2>Executive summary</h2><p>Independent evaluator consensus</p></div><span class="verified">Verified</span></div><p class="report-copy" id="report-exec-summary">The uploaded project demonstrates useful control evidence, but the audit identified material governance gaps in evidence provenance, retention handling, accountable ownership, and policy traceability. Address these before treating the assessed capability as production-ready in regulated workflows.</p><div class="verdicts"><span><b id="report-passed-count">1,024</b> Passed</span><span><b id="report-needs-evidence-count">148</b> Needs evidence</span><span><b id="report-failed-count">76</b> Failed</span></div></article><article class="panel report-architecture-panel" id="report-architecture-section"><div class="panel-title"><div><h2>Detected architecture</h2><p>Execution path used for this run</p></div></div><div class="arch-flow" id="report-arch-flow"><span>Source<br><small>Uploaded project</small></span><i>-></i><span>Evidence<br><small>Normalization</small></span><i>-></i><span>Controls<br><small>Policy mapping</small></span><i>-></i><span>Report<br><small>Governance verdict</small></span></div><div class="tech-tags"><span>EvidenceGraph</span><span>Policy Map</span><span>RAG</span><span>OpenTelemetry</span></div></article></div>
+        <div class="report-secondary-grid"><article class="panel report-performance-panel" id="report-run-context-section"><div class="panel-title"><div><h2>Run context</h2><p>Pinned source, report name, and comparison target</p></div></div><div id="report-run-context"></div></article><article class="panel report-transparency-panel" id="report-policy-sync-section"><div class="panel-title"><div><h2>Policy and knowledge sync</h2><p>Updated resources and knowledge-base comparison for this run</p></div></div><div id="report-policy-sync"></div></article></div>
+        <article class="panel findings report-findings-panel" id="report-findings-section"><div class="panel-title"><div><h2>Priority remediation plan</h2><p>Top actions ordered by risk reduction and implementation effort</p></div><button class="ghost" id="report-findings-filter-label">All findings</button></div><div id="finding-list"></div></article>
+        <div class="report-secondary-grid"><article class="panel report-performance-panel" id="report-performance-section"><div class="panel-title"><div><h2>Agent performance</h2><p>Execution counters and latency snapshot</p></div></div><div id="runtime-performance"></div></article><article class="panel report-transparency-panel" id="report-transparency-section"><div class="panel-title"><div><h2>User transparency log</h2><p>Compact stage-by-stage execution trace</p></div></div><div id="runtime-transparency"></div></article><article class="panel report-performance-panel" id="report-ai-technical-section"><div class="panel-title"><div><h2>AI technical landscape</h2><p>Approximate token consumption and stack recommendations</p></div></div><div id="report-ai-technical"></div></article></div>
+        <article class="panel tools report-tools-panel"><div class="panel-title"><div><h2>Recommended open-source toolkit</h2><p>Tools mapped to the current remediation path</p></div></div><div id="tool-list"></div></article>
       </section>
     </main>
   </div>
-  <div class="toast" id="toast"><span>✓</span><div><b>Audit started</b><small>Your agent team is analyzing the project.</small></div></div>
+  <div class="toast" id="toast"><span>Live</span><div><b>Audit started</b><small>Your agent team is analyzing the project.</small></div></div>
   <script type="module" src="/app.js"></script>
 </body>
 </html>

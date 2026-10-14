@@ -30,6 +30,25 @@ Visit `http://127.0.0.1:4185/`. Changes to HTML, CSS, and JavaScript automatical
 
 Detailed engineering recommendations and migration-safe module contracts are documented in `DEAD_CODE_AND_MODULARITY_ANALYSIS.md`.
 
+## Agent infrastructure redesign
+
+The repository now includes a concrete redesign scaffold for agent execution:
+
+- Short-term memory and long-term memory layers
+- Objective-driven planning with subgoal decomposition
+- Action execution with evidence references
+- Reflection and self-critique stages
+- Role-based access control checks
+- Performance monitoring and transparency ledger output
+
+Read the architecture and usage notes in `AGENT_INFRASTRUCTURE.md`.
+
+Run the demo workflow:
+
+```powershell
+npm run agent:demo
+```
+
 ## Mock test coverage
 
 The prototype includes 16 audit records spanning healthcare, financial services, retail, HR, manufacturing, insurance, and public-facing AI. Scores range from 43% to 99% and cover ready, review, and attention states. The report fixture includes 12 remediation findings across privacy, security, model governance, resilience, data lifecycle, and AI-specific attack risks.

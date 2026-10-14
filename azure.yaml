@@ -1,0 +1,14 @@
+name: aegis-ai-audit
+metadata:
+  template: aegis-ai-audit@0.1.0
+services:
+  web:
+    project: .
+    host: containerapp
+    language: js
+    docker:
+      path: ./Dockerfile
+      remoteBuild: true
+infra:
+  provider: bicep
+  path: ./infra

@@ -1,0 +1,416 @@
+.agent-diagrams-panel .report-primary-grid {
+  gap: 16px;
+}
+
+.agent-diagrams-panel .agent-diagrams-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.agent-diagrams-panel .mermaid {
+  background: linear-gradient(135deg, #f5fbff 0%, #eef7f2 100%);
+  border: 1px solid #c9dde7;
+  border-radius: 12px;
+  padding: 18px;
+  min-height: 520px;
+  max-height: 960px;
+  overflow: auto;
+}
+
+.agent-diagrams-panel .mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.agent-diagrams-panel .mermaid text,
+.agent-diagrams-panel .mermaid tspan,
+.agent-diagrams-panel .mermaid .nodeLabel,
+.agent-diagrams-panel .mermaid .messageText,
+.agent-diagrams-panel .mermaid .actor {
+  font-family: Manrope, "Plus Jakarta Sans", sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  fill: #133447 !important;
+}
+
+.agent-diagrams-panel h3 {
+  font-size: 18px;
+}
+
+body.diagram-size-boardroom .agent-diagrams-panel .mermaid {
+  padding: 22px;
+  min-height: 640px;
+  max-height: 1100px;
+}
+
+body.diagram-size-boardroom .agent-diagrams-panel .mermaid text,
+body.diagram-size-boardroom .agent-diagrams-panel .mermaid tspan,
+body.diagram-size-boardroom .agent-diagrams-panel .mermaid .nodeLabel,
+body.diagram-size-boardroom .agent-diagrams-panel .mermaid .messageText,
+body.diagram-size-boardroom .agent-diagrams-panel .mermaid .actor {
+  font-size: 26px !important;
+}
+
+body.diagram-size-boardroom .agent-diagrams-panel h3 {
+  font-size: 22px;
+}
+
+@media (max-width: 980px) {
+  .agent-diagrams-panel .mermaid {
+    min-height: 360px;
+    max-height: 620px;
+  }
+
+  .agent-diagrams-panel .mermaid text,
+  .agent-diagrams-panel .mermaid tspan,
+  .agent-diagrams-panel .mermaid .nodeLabel,
+  .agent-diagrams-panel .mermaid .messageText,
+  .agent-diagrams-panel .mermaid .actor {
+    font-size: 16px !important;
+  }
+
+  body.diagram-size-boardroom .agent-diagrams-panel .mermaid text,
+  body.diagram-size-boardroom .agent-diagrams-panel .mermaid tspan,
+  body.diagram-size-boardroom .agent-diagrams-panel .mermaid .nodeLabel,
+  body.diagram-size-boardroom .agent-diagrams-panel .mermaid .messageText,
+  body.diagram-size-boardroom .agent-diagrams-panel .mermaid .actor {
+    font-size: 20px !important;
+  }
+}
+
+.live-icon-hierarchy-panel {
+  margin-top: 14px;
+}
+
+.live-icon-hierarchy-panel h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.live-icon-hierarchy-panel p {
+  margin: 6px 0 12px;
+  font-size: 12px;
+  color: #5a6f7a;
+}
+
+.live-icon-hierarchy {
+  border: 1px solid #c8dbe6;
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 280px;
+  background: linear-gradient(145deg, #f7fbff 0%, #edf4fa 52%, #f4f7ef 100%);
+  --flow-color: #4f97bc;
+  --flow-speed: 1.35s;
+  --flow-opacity: 0.78;
+  --agent-flash-speed: 2.8s;
+  --active-node-fill: #fff6d1;
+  --active-node-stroke: #133246;
+  --active-node-text: #0e2230;
+  --active-node-glow: rgba(16, 76, 117, 0.35);
+  --inactive-node-opacity: 0.2;
+}
+
+.live-icon-hierarchy svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.live-icon-hierarchy svg .edgePath .path,
+.live-icon-hierarchy svg path.flowchart-link {
+  stroke: var(--flow-color) !important;
+  stroke-width: 3.1px !important;
+  stroke-linecap: round;
+  stroke-dasharray: 3 10 !important;
+  stroke-dashoffset: 0;
+  opacity: var(--flow-opacity);
+  animation: pipeline-water-flow var(--flow-speed) linear infinite;
+}
+
+.live-icon-hierarchy[class*="pipeline-active-"] svg .edgePath .path,
+.live-icon-hierarchy[class*="pipeline-active-"] svg path.flowchart-link {
+  filter: drop-shadow(0 0 2px rgba(84, 168, 213, 0.44)) drop-shadow(0 0 7px rgba(84, 168, 213, 0.28));
+  animation: pipeline-water-flow var(--flow-speed) linear infinite, pipeline-flow-pulse 1.4s ease-in-out infinite;
+}
+
+/*
+  Mermaid renders edges in declaration order. We accent the trunk path plus
+  layer ingress edges so users can see exactly where flow is currently active.
+*/
+.live-icon-hierarchy .edgePaths .edgePath .path {
+  transition: stroke-width 220ms ease, opacity 220ms ease, filter 220ms ease;
+}
+
+.live-icon-hierarchy.pipeline-active-baseline .edgePaths .edgePath:nth-of-type(1) .path,
+.live-icon-hierarchy.pipeline-active-baseline .edgePaths .edgePath:nth-of-type(2) .path,
+.live-icon-hierarchy.pipeline-active-baseline .edgePaths .edgePath:nth-of-type(13) .path,
+.live-icon-hierarchy.pipeline-active-orchestration .edgePaths .edgePath:nth-of-type(3) .path,
+.live-icon-hierarchy.pipeline-active-orchestration .edgePaths .edgePath:nth-of-type(13) .path,
+.live-icon-hierarchy.pipeline-active-orchestration .edgePaths .edgePath:nth-of-type(14) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(4) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(5) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(6) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(7) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(8) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(14) .path,
+.live-icon-hierarchy.pipeline-active-analysis .edgePaths .edgePath:nth-of-type(15) .path,
+.live-icon-hierarchy.pipeline-active-compliance .edgePaths .edgePath:nth-of-type(9) .path,
+.live-icon-hierarchy.pipeline-active-compliance .edgePaths .edgePath:nth-of-type(15) .path,
+.live-icon-hierarchy.pipeline-active-compliance .edgePaths .edgePath:nth-of-type(16) .path,
+.live-icon-hierarchy.pipeline-active-assurance .edgePaths .edgePath:nth-of-type(10) .path,
+.live-icon-hierarchy.pipeline-active-assurance .edgePaths .edgePath:nth-of-type(11) .path,
+.live-icon-hierarchy.pipeline-active-assurance .edgePaths .edgePath:nth-of-type(16) .path,
+.live-icon-hierarchy.pipeline-active-assurance .edgePaths .edgePath:nth-of-type(17) .path,
+.live-icon-hierarchy.pipeline-active-reporting .edgePaths .edgePath:nth-of-type(12) .path,
+.live-icon-hierarchy.pipeline-active-reporting .edgePaths .edgePath:nth-of-type(17) .path {
+  stroke-width: 4.6px !important;
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(84, 168, 213, 0.52)) drop-shadow(0 0 10px rgba(84, 168, 213, 0.34));
+  animation: pipeline-water-flow var(--flow-speed) linear infinite, pipeline-flow-pulse 1.05s ease-in-out infinite;
+}
+
+.live-icon-hierarchy.pipeline-done-baseline .edgePaths .edgePath:nth-of-type(1) .path,
+.live-icon-hierarchy.pipeline-done-baseline .edgePaths .edgePath:nth-of-type(2) .path,
+.live-icon-hierarchy.pipeline-done-orchestration .edgePaths .edgePath:nth-of-type(3) .path,
+.live-icon-hierarchy.pipeline-done-orchestration .edgePaths .edgePath:nth-of-type(13) .path,
+.live-icon-hierarchy.pipeline-done-analysis .edgePaths .edgePath:nth-of-type(14) .path,
+.live-icon-hierarchy.pipeline-done-analysis .edgePaths .edgePath:nth-of-type(4) .path,
+.live-icon-hierarchy.pipeline-done-analysis .edgePaths .edgePath:nth-of-type(5) .path,
+.live-icon-hierarchy.pipeline-done-analysis .edgePaths .edgePath:nth-of-type(6) .path,
+.live-icon-hierarchy.pipeline-done-analysis .edgePaths .edgePath:nth-of-type(7) .path,
+.live-icon-hierarchy.pipeline-done-analysis .edgePaths .edgePath:nth-of-type(8) .path,
+.live-icon-hierarchy.pipeline-done-compliance .edgePaths .edgePath:nth-of-type(15) .path,
+.live-icon-hierarchy.pipeline-done-compliance .edgePaths .edgePath:nth-of-type(9) .path,
+.live-icon-hierarchy.pipeline-done-assurance .edgePaths .edgePath:nth-of-type(16) .path,
+.live-icon-hierarchy.pipeline-done-assurance .edgePaths .edgePath:nth-of-type(10) .path,
+.live-icon-hierarchy.pipeline-done-assurance .edgePaths .edgePath:nth-of-type(11) .path,
+.live-icon-hierarchy.pipeline-done-reporting .edgePaths .edgePath:nth-of-type(17) .path,
+.live-icon-hierarchy.pipeline-done-reporting .edgePaths .edgePath:nth-of-type(12) .path {
+  opacity: 0.92;
+  stroke-width: 3.8px !important;
+}
+
+.live-icon-hierarchy svg marker path {
+  fill: var(--flow-color) !important;
+  opacity: 0.9;
+}
+
+.live-icon-hierarchy .node {
+  transition: filter 0.28s ease, opacity 0.28s ease;
+}
+
+.live-icon-hierarchy .node rect,
+.live-icon-hierarchy .node polygon,
+.live-icon-hierarchy .node path {
+  transition: fill 220ms ease, stroke 220ms ease, stroke-width 220ms ease;
+}
+
+.live-icon-hierarchy .node .label,
+.live-icon-hierarchy .node .label p {
+  transition: color 220ms ease;
+}
+
+.live-icon-hierarchy.pipeline-stage-idle .node {
+  opacity: 0.95;
+}
+
+.live-icon-hierarchy.pipeline-stage-idle {
+  --flow-speed: 2.6s;
+  --flow-opacity: 0.45;
+}
+
+.live-icon-hierarchy[class*="pipeline-active-"] .node {
+  opacity: var(--inactive-node-opacity);
+}
+
+.live-icon-hierarchy[class*="pipeline-active-"] .node[class*="agent-"]:not(.agent-in-action) {
+  opacity: 0.22;
+  filter: grayscale(0.45) brightness(0.78) saturate(0.72);
+}
+
+.live-icon-hierarchy.pipeline-active-baseline {
+  --flow-color: #1f8a5b;
+}
+
+.live-icon-hierarchy.pipeline-active-orchestration {
+  --flow-color: #1f6fb2;
+}
+
+.live-icon-hierarchy.pipeline-active-analysis {
+  --flow-color: #6554c0;
+}
+
+.live-icon-hierarchy.pipeline-active-compliance {
+  --flow-color: #c76b00;
+}
+
+.live-icon-hierarchy.pipeline-active-assurance {
+  --flow-color: #b08900;
+}
+
+.live-icon-hierarchy.pipeline-active-reporting {
+  --flow-color: #9b3db7;
+}
+
+.live-icon-hierarchy.pipeline-done-baseline .node.baseline,
+.live-icon-hierarchy.pipeline-done-orchestration .node.orchestration,
+.live-icon-hierarchy.pipeline-done-analysis .node.analysis,
+.live-icon-hierarchy.pipeline-done-compliance .node.compliance,
+.live-icon-hierarchy.pipeline-done-assurance .node.assurance,
+.live-icon-hierarchy.pipeline-done-reporting .node.reporting {
+  opacity: 0.78;
+  filter: drop-shadow(0 0 5px rgba(20, 84, 120, 0.22));
+}
+
+.live-icon-hierarchy.pipeline-active-baseline .node.baseline,
+.live-icon-hierarchy.pipeline-active-orchestration .node.orchestration,
+.live-icon-hierarchy.pipeline-active-analysis .node.analysis,
+.live-icon-hierarchy.pipeline-active-compliance .node.compliance,
+.live-icon-hierarchy.pipeline-active-assurance .node.assurance,
+.live-icon-hierarchy.pipeline-active-reporting .node.reporting {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(20, 84, 120, 0.38));
+}
+
+.live-icon-hierarchy .node.agent-in-action {
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(10, 33, 52, 0.45)) drop-shadow(0 0 14px var(--active-node-glow));
+  animation: pipeline-agent-node-flash var(--agent-flash-speed) ease-in-out infinite;
+}
+
+.live-icon-hierarchy .node.agent-in-action rect,
+.live-icon-hierarchy .node.agent-in-action polygon,
+.live-icon-hierarchy .node.agent-in-action path {
+  fill: var(--active-node-fill) !important;
+  stroke: var(--active-node-stroke) !important;
+  stroke-width: 3.8px !important;
+}
+
+.live-icon-hierarchy .node.agent-in-action .label,
+.live-icon-hierarchy .node.agent-in-action .label p {
+  color: var(--active-node-text) !important;
+  font-weight: 800;
+  animation: pipeline-agent-icon-flash var(--agent-flash-speed) ease-in-out infinite;
+}
+
+.live-icon-hierarchy .node.agent-in-action .nodeLabel {
+  background: color-mix(in srgb, var(--active-node-fill) 92%, #ffffff 8%);
+  border: 2px solid color-mix(in srgb, var(--active-node-stroke) 85%, #ffffff 15%);
+  border-radius: 9px;
+  padding: 2px 8px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.36), 0 0 12px var(--active-node-glow);
+}
+
+@media (prefers-color-scheme: dark) {
+  .live-icon-hierarchy {
+    border-color: #31506a;
+    background: radial-gradient(120% 140% at 0% 0%, #142432 0%, #0f1924 55%, #0a121a 100%);
+    --flow-color: #7ccfff;
+    --flow-opacity: 0.88;
+    --active-node-fill: #def6ff;
+    --active-node-stroke: #8cd8ff;
+    --active-node-text: #062537;
+    --active-node-glow: rgba(95, 196, 255, 0.5);
+    --inactive-node-opacity: 0.14;
+  }
+
+  .live-icon-hierarchy .node.agent-in-action {
+    filter: drop-shadow(0 0 4px rgba(140, 216, 255, 0.42)) drop-shadow(0 0 18px rgba(95, 196, 255, 0.46));
+  }
+
+  .live-icon-hierarchy[class*="pipeline-active-"] .node[class*="agent-"]:not(.agent-in-action) {
+    filter: grayscale(0.6) brightness(0.62) saturate(0.6);
+  }
+
+  .live-icon-hierarchy .node.agent-in-action .nodeLabel {
+    box-shadow: 0 0 0 1px rgba(140, 216, 255, 0.5), 0 0 15px rgba(95, 196, 255, 0.55);
+  }
+}
+
+@keyframes pipeline-water-flow {
+  from {
+    stroke-dashoffset: 38;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pipeline-flow-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    stroke-width: 2.9px;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 3.5px;
+  }
+}
+
+@keyframes pipeline-agent-node-flash {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pipeline-agent-icon-flash {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+.ai-component-card {
+  transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+}
+
+.ai-component-card.pipeline-active {
+  border-color: #2c7fa3;
+  box-shadow: 0 0 0 2px rgba(44, 127, 163, 0.15), 0 8px 20px rgba(29, 87, 113, 0.18);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+}
+.pipeline-icon-legend {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+.pipeline-icon-legend > div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 9px;
+  border: 1px solid #d3e2e8;
+  border-radius: 8px;
+  background: #f7fcff;
+}
+.pipeline-icon-legend span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #486474;
+}
+.pipeline-icon-legend b {
+  font-size: 12px;
+  color: #16384d;
+  line-height: 1.35;
+}
+body.diagram-size-boardroom .pipeline-icon-legend span {
+  font-size: 14px;
+}
+body.diagram-size-boardroom .pipeline-icon-legend b {
+  font-size: 16px;
+}
+
+.ai-component-card.pipeline-done {
+  opacity: 0.8;
+}
