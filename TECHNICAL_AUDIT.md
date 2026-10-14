@@ -4,6 +4,23 @@
 **Reviewed scope:** `index.html`, `app.js`, `styles.css`, and `README.md`  
 **Current maturity:** Interactive front-end prototype; no executable audit backend
 
+## Project description
+
+Aegis AI Audit is a local-first prototype for orchestrated AI compliance audits. It takes a project folder, GitHub repository, or data source; maps architecture and data flows; evaluates controls with specialist agents; independently verifies conclusions; and produces executive and technical remediation reports.
+
+The current repository is best understood as a product and architecture prototype. The UI demonstrates intake, framework selection, agent visibility, findings, and reporting, but the audit pipeline is still simulated rather than executed against live code, data, or infrastructure.
+
+## Playbook for using this document
+
+Use this audit as the working guide for deciding what to build next and in what order.
+
+1. Start at the executive verdict to understand the current product maturity and the recommended architecture direction.
+2. Read the “What actually exists” table to separate real functionality from simulated behavior.
+3. Use the structural weaknesses and dead-components sections to identify the highest-risk coupling, missing state, and misleading controls.
+4. Follow the recommended production architecture when designing backend services, worker boundaries, evidence storage, and verification flows.
+5. Use the implementation roadmap as the build sequence: honest vertical slice first, then safe multi-framework expansion, then scale-out and continuous assurance.
+6. Treat this document as the source of truth for scope decisions until the real backend and worker pipeline are implemented.
+
 ## Executive verdict
 
 The application is correctly structured for demonstrating product flow, but it is not yet structured as a production AI audit platform. The current runtime is one static HTML document, one global JavaScript script, and one stylesheet. All framework scores, agents, findings, architecture results, tool recommendations, and recent audits are static seed data. Starting an audit only animates the pipeline for 2.2 seconds and opens a predefined report.
